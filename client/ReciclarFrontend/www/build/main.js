@@ -33,7 +33,7 @@ var WelcomePage = /** @class */ (function () {
     };
     WelcomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-welcome',template:/*ion-inline-start:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\welcome\welcome.html"*/'<ion-header>\n    <ion-navbar color="blue-dark">\n        <ion-title text-center>Nombre App</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n  <div class="">\n    <figure class="container-logo">\n      <img src="../../assets/imgs/logoApp.png" class="logo" alt="Logo App">\n    </figure>\n\n    <p class="text-logo">\n      Promociones por <br>Reciclar\n    </p>\n  </div>\n\n  <div class="container-buttons">\n      <button ion-button full class="btn-registro btn-blue" (click)="goToRegister()">Regístrate</button>\n      <button ion-button full class="btn-ingresa btn-green">Ingresa</button>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\welcome\welcome.html"*/,
+            selector: 'page-welcome',template:/*ion-inline-start:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\welcome\welcome.html"*/'<ion-header>\n\n    <ion-navbar color="blue-dark">\n\n        <ion-title text-center>Nombre App</ion-title>\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="container">\n\n  <div class="">\n\n    <figure class="container-logo">\n\n      <img src="../../assets/imgs/logoApp.png" class="logo" alt="Logo App">\n\n    </figure>\n\n\n\n    <p class="text-logo">\n\n      Promociones por <br>Reciclar\n\n    </p>\n\n  </div>\n\n\n\n  <div class="container-buttons">\n\n      <button ion-button full class="btn-registro btn-blue" (click)="goToRegister()">Regístrate</button>\n\n      <button ion-button full class="btn-ingresa btn-green">Ingresa</button>\n\n  </div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\welcome\welcome.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], WelcomePage);
@@ -67,11 +67,11 @@ webpackEmptyAsyncContext.id = 110;
 var map = {
 	"../pages/register/register.module": [
 		271,
-		1
+		0
 	],
 	"../pages/welcome/welcome.module": [
 		272,
-		0
+		1
 	]
 };
 function webpackAsyncContext(req) {
@@ -375,12 +375,11 @@ var RegisterPage = /** @class */ (function () {
     };
     RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\register\register.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Registro</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div>\n      <ion-list radio-group [(ngModel)]="participantType">        \n          <ion-item>\n            <ion-label>Yo dono</ion-label>\n            <ion-radio value="d"></ion-radio>\n          </ion-item>\n\n          <div class="radio-description" *ngIf="participantType === \'d\'">\n            <span>Si separas tus residuos reciclables, quieres donarlos y obtener descuentos.</span>\n          </div>\n        \n          <ion-item>\n            <ion-label>Yo Recojo</ion-label>\n            <ion-radio value="r"></ion-radio>\n          </ion-item>\n\n          <div class="radio-description" *ngIf="participantType === \'r\'">\n              <span>Si recibes material reciclable y puedes ir a recogerlo.</span>\n          </div>\n        </ion-list>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\register\register.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\register\register.html"*/'<ion-header>\n\n  <ion-navbar color="blue-dark">\n\n    <ion-title>Registro</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="container">\n\n\n\n  <div>\n\n      <ion-list radio-group [(ngModel)]="participantType">        \n\n          <ion-item>\n\n            <ion-label>Yo dono</ion-label>\n\n            <ion-radio value="d"></ion-radio>\n\n          </ion-item>\n\n\n\n          <div class="radio-description" *ngIf="participantType === \'d\'">\n\n            <span>Si separas tus residuos reciclables, quieres donarlos y obtener descuentos.</span>\n\n          </div>\n\n        \n\n          <ion-item>\n\n            <ion-label>Yo Recojo</ion-label>\n\n            <ion-radio value="r"></ion-radio>\n\n          </ion-item>\n\n\n\n          <div class="radio-description" *ngIf="participantType === \'r\'">\n\n              <span>Si recibes material reciclable y puedes ir a recogerlo.</span>\n\n          </div>\n\n        </ion-list>\n\n  </div>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"F:\htdocs\Apps\proyectoJoha\Reciclar123\client\ReciclarFrontend\src\pages\register\register.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], RegisterPage);
     return RegisterPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=register.js.map
