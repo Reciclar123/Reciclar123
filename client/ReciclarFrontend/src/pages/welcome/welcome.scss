@@ -1,0 +1,37 @@
+page-welcome {
+
+  button.btn-registro {
+    position: absolute;
+    bottom: 4rem;
+  }
+
+  button.btn-ingresa {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .logo {
+    height: 350px;
+  }
+
+  .text-logo {
+    text-align: center;
+    font-size: 24px;
+    color: $orange;
+  }
+
+  .btn-green {
+    background-color: $green-light;
+  }
+
+  .btn-blue {
+    background-color: $blue-dark;
+  }
+
+  .container-logo {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+}

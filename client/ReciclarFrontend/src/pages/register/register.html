@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="blue-dark">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="container">
+
+  <div>
+      <ion-list radio-group [(ngModel)]="participantType">        
+          <ion-item>
+            <ion-label>Yo dono</ion-label>
+            <ion-radio value="d"></ion-radio>
+          </ion-item>
+
+          <div class="radio-description" *ngIf="participantType === 'd'">
+            <span>Si separas tus residuos reciclables, quieres donarlos y obtener descuentos.</span>
+          </div>
+        
+          <ion-item>
+            <ion-label>Yo Recojo</ion-label>
+            <ion-radio value="r"></ion-radio>
+          </ion-item>
+
+          <div class="radio-description" *ngIf="participantType === 'r'">
+              <span>Si recibes material reciclable y puedes ir a recogerlo.</span>
+          </div>
+        </ion-list>
+  </div>
+
+
+</ion-content>
