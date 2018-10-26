@@ -1,0 +1,111 @@
+{
+"User":
+{
+  "password":"123456",
+  "email" : "example@domain.com",
+  "username" : "example"
+},
+"Person" :
+{
+    "id": "xc438ad795da83a4",
+    "cedula" : "10123242",
+    "nombre" : "nombre agrigultor",
+    "email" : "example@domain.com",
+    "telefono" : "312928939",
+    "ciudad": "Bogota",
+    "direccion" :"cra 29 # 34 -21",
+    "rol" : "donador",
+    "gotas" : 100,
+    "politicas" : true,
+    "fecha" : "yyyy-mm-dd"
+},
+"AddressPerson" :
+{
+        "id" : "ad1d45028",
+        "personId" : "xc438ad795da83a4",
+        "address" : "cra 19",
+        "days":{
+              "sunday":"tarde",
+              "monday":"manana"
+
+        },
+        "festivos" : true
+},
+"TipoMaterial":
+{
+      "id" : "ad1d45028",
+      "descripcion" : "telas",
+      "unidades" :
+             [ { "descripcion" : "bolsa grande","gotasRecompensa" : 100},
+               { "descripcion" : "bolsa pequeña","gotasRecompensa" : 10}
+            ]
+},
+"MaterialPerson" :
+{
+        "id" : "bne442hj3434",
+        "personId" : "xc438ad795da83a4",
+        "tipoId" : "xc438ad795da83a4",
+        "unidadTipoId" : 1,
+        "estado" : "Limpio/seco",
+        "addressRecoleccionId" :"ad1d45028",
+        "recicladorRecolecto" : "bne442hj3434",
+        "status" : "publicado",
+},
+"Reciclaje" :
+{
+  "id" : "x2166sadf442hj34",
+  "personId" : "xc438ad795da83a4",
+  "recicladorRecolecto" : "bne442hj3434",
+  "materiales" :[
+        {"id":"xc438ad795da83a4"},
+        {"id":"2332dajfadf"},
+  ],
+  "gotasRedimir" : 120,
+  "porcentajeVolumen" : 100,
+  "calificacionVolumen" : 1 ,
+  "calificacionEstado" : 5,
+  "status" : "seleccionado",
+
+},
+"EmpresasRedimir" :
+{
+    "id" : "bvf24387dea8932dv",
+    "nombre":"Éxito",
+    "puntos" : [
+          {
+                "address": "cra 10 ",
+                 "promociones" :[
+                                    {  "promocion" : "2 x 1 producto a","valorGotas":23 }
+                                    {  "promocion" : "25% producto b","valorGotas":123 }
+                                ],
+                "status" : "activo"
+          },
+          {
+                "address": "cra 11 ",
+                 "promociones" :[
+                                    {  "promocion" : "11% producto a","valorGotas":23 }
+                                    {  "promocion" : "25% producto b","valorGotas":123 }
+                                ],
+                "status" : "activo"
+          }
+    ],
+    "status" : "activo"
+},
+"PromosRedimidas" :
+{
+  "id" : "x2166sadf442hj34",
+  "personId" : "xc438ad795da83a4",
+  "empresaId" : "bne442hj3434",
+  "promociones" :[
+                     {  "promocion" : "11% producto a","valorGotas":23 }
+                     {  "promocion" : "25% producto b","valorGotas":123 }
+  ],
+  "totalGotas" : 146,
+  "status" : "seleccionado",
+
+},
+
+
+
+
+}
