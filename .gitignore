@@ -17,6 +17,10 @@
 coverage
 node_modules
 npm-debug.log
+<<<<<<< HEAD
+=======
+sonarlint
+>>>>>>> develop
 
 ### Ionic3 ###
 # Log an tmp data
