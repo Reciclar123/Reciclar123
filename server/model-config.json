@@ -34,5 +34,33 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Person": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "AddressPerson": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "TipoMaterial": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "MaterialPerson": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Reciclaje": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "EmpresasRedimir": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "PromosRedimidas": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

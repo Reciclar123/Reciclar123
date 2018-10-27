@@ -1,0 +1,55 @@
+{
+  "name": "Reciclaje",
+  "plural": "Recyclings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "personId": {
+      "type": "string",
+      "required": true
+    },
+    "recicladorRecolecto": {
+      "type": "string",
+      "required": true
+    },
+    "materiales": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    },
+    "gotasRedimir": {
+      "type": "number",
+      "required": true
+    },
+    "porcentajeVolumen": {
+      "type": "number",
+      "required": true
+    },
+    "calificacionVolumen": {
+      "type": "number"
+    },
+    "calificacionEstado": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "seleccionado"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
