@@ -27981,9 +27981,39 @@ ion-navbar.toolbar {
   background-color: #00507B !important;
 }
 
+.error-msg {
+  color: #a94442;
+  padding: 10px 15px;
+}
+
+page-register .register-form {
+  background-color: #FFFFFF;
+  padding-top: 20px;
+  border: none;
+}
+
 page-register .radio-description {
   background-color: #FFFFFF;
+  padding: 10px 15px 0px 15px;
+}
+
+page-register .check-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 10px 15px;
+  margin-top: 20px;
+}
+
+page-register .check-container a {
+  margin-left: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+page-register ion-list {
+  margin: 0;
 }
 
 page-welcome button.btn-registro {

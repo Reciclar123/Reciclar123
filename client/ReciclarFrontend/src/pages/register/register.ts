@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ValidationsProvider } from '../../providers/validations/validations';
+import { TermsModalComponent } from '../../components/terms-modal/terms-modal';
 
 
 @IonicPage()
@@ -10,17 +12,72 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterPage {
 
+  private formSubmitAttempt: boolean;
   formGroup: FormGroup;
-  participantType: string;
+  isValidFormSubmitted = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-		this.formGroup = new FormGroup({
-			participantType: new FormControl('', [Validators.required])
-		});	
+  registerForm = {
+    participantType: '',
+    name: '',
+    email: '',
+    address: '',
+    phone: '',
+    terms: false,
+    password: ''
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public validProv: ValidationsProvider,
+    public modalCtrl: ModalController) {
+
+    this.formGroup = new FormGroup({
+      participantType: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.minLength(3),
+        Validators.required
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(this.validProv.EMAIL_REGEXP)
+      ]),
+      address: new FormControl('', [
+        Validators.minLength(10),
+        Validators.required
+      ]),
+      phone: new FormControl('', [
+        Validators.minLength(7),
+        Validators.maxLength(10),
+        Validators.required,
+        Validators.pattern(this.validProv.NUMBER_REGEXP)
+      ]),
+      terms: new FormControl(false, [Validators.required, Validators.requiredTrue]),
+      password: new FormControl('', [
+        Validators.minLength(6),
+        Validators.maxLength(20),
+        Validators.required
+      ])
+    });
+  }
+
+  onFormSubmit() {
+    this.formSubmitAttempt = false;
+    if (this.formGroup.invalid) {
+      return;
+    }
+    this.formSubmitAttempt = true;
+    console.log('form ok')
+  }
+
+  isFieldValid(field: string) {
+    return (!this.formGroup.get(field).valid && this.formGroup.get(field).touched) ||
+      (this.formGroup.get(field).untouched && this.formSubmitAttempt);
+  }
+
+  showTerms() {
+    console.log('showTerms');
+    let profileModal = this.modalCtrl.create(TermsModalComponent);
+    profileModal.present();
   }
 
 }
