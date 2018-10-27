@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="blue-dark">
+    <ion-title text-center>Ingresa</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="container">
+
+  <figure class="container-logo">
+    <img src="../../assets/imgs/logoApp.png" class="logo" alt="Logo App">
+  </figure>
+
+  <form [formGroup]="formGroup" novalidate class="register-form">
+
+    <ion-item>
+      <ion-label floating>Correo o número celular</ion-label>
+      <ion-input type="text" formControlName="username" [(ngModel)]="loginForm.username"></ion-input>
+    </ion-item>
+    <field-error-display [displayError]="isFieldValid('username')" errorMsg="Ingresa un usuario válido"></field-error-display>
+
+    <ion-item>
+      <ion-label floating>Clave</ion-label>
+      <ion-input type="password" formControlName="password" [(ngModel)]="loginForm.password" maxlength="20"></ion-input>
+    </ion-item>
+    <field-error-display [displayError]="isFieldValid('password')" errorMsg="La clave debe tener mínimo 6 y máximo 20 caracteres"></field-error-display>
+
+    <div class="container-logo">
+      <a (click)="goToResetPass()">¿Olvidaste tu clave?</a>
+    </div>
+
+    <div class="container-logo">
+      <field-error-display [displayError]="userError" errorMsg="Usuario o Clave Inválidos"></field-error-display>
+    </div>
+
+    <button ion-button color="primary" full style="margin-top: 30px" (click)="sendForm()" type="button" [disabled]="formGroup?.invalid">
+      Ingresar
+    </button>
+
+  </form>
+
+</ion-content>

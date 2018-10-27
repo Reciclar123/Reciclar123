@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar color="blue-dark">
+      <ion-title text-center>Recordar Datos</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="container">
+  
+    <figure class="container-logo">
+      <img src="../../assets/imgs/logoApp.png" class="logo" alt="Logo App">
+    </figure>
+  
+    <form [formGroup]="formGroup" novalidate class="register-form">
+  
+      <ion-item>
+        <ion-label floating>Correo o número celular</ion-label>
+        <ion-input type="text" formControlName="user" [(ngModel)]="loginForm.user"></ion-input>
+      </ion-item>
+      <field-error-display [displayError]="isFieldValid('user')" errorMsg="Ingresa un usuario válido"></field-error-display>
+
+      <div class="container-note">
+        <p text-center>
+            Al solicitar recoradar clave, se enviará un mail con tu clave o un mensaje de texto a tu numero celular, según hayas puesto un
+            dato u otro.
+        </p>
+      </div>
+  
+      <button ion-button color="primary" full style="margin-top: 30px" (click)="submit()" type="button" [disabled]="formGroup.invalid">
+        Recordar Clave
+      </button>
+  
+    </form>
+  
+  </ion-content>

@@ -16,6 +16,9 @@ import { ValidationsProvider } from '../providers/validations/validations';
 import { ComponentsModule } from '../components/components.module';
 import { FieldErrorDisplayComponent } from '../components/field-error-display/field-error-display';
 import { TermsModalComponent } from '../components/terms-modal/terms-modal';
+import { LoginPage } from '../pages/login/login';
+import { ResetPassPage } from '../pages/reset-pass/reset-pass';
+import { RequestProvider } from '../providers/request/request';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { TermsModalComponent } from '../components/terms-modal/terms-modal';
     HomePage,
     ListPage,
     WelcomePage,
-    RegisterPage
+    RegisterPage,
+    LoginPage,
+    ResetPassPage
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,8 @@ import { TermsModalComponent } from '../components/terms-modal/terms-modal';
     ListPage,
     WelcomePage,
     RegisterPage,
+    LoginPage,
+    ResetPassPage,
     FieldErrorDisplayComponent,
     TermsModalComponent
   ],
@@ -48,7 +55,8 @@ import { TermsModalComponent } from '../components/terms-modal/terms-modal';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ValidationsProvider
+    ValidationsProvider,
+    RequestProvider
   ]
 })
 export class AppModule {}
