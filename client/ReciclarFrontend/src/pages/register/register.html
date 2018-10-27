@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="blue-dark">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="container">
+
+  <form [formGroup]="formGroup" novalidate class="register-form">
+    <ion-list radio-group formControlName="participantType" [(ngModel)]="registerForm.participantType">
+      <ion-item>
+        <ion-label>Yo dono</ion-label>
+        <ion-radio value="d"></ion-radio>
+      </ion-item>
+      <div class="radio-description" *ngIf="registerForm.participantType === 'd'">
+        <span>* Si separas tus residuos reciclables, quieres donarlos y obtener descuentos.</span>
+      </div>
+
+      <ion-item>
+        <ion-label>Yo Recojo</ion-label>
+        <ion-radio value="r"></ion-radio>
+      </ion-item>
+      <div class="radio-description" *ngIf="registerForm.participantType === 'r'">
+        <span>* Si recibes material reciclable y puedes ir a recogerlo.</span>
+      </div>
+    </ion-list>
+
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" formControlName="name" [(ngModel)]="registerForm.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Correo</ion-label>
+      <ion-input type="email" formControlName="email" [(ngModel)]="registerForm.email" email placeholer="micorreo@email.com"></ion-input>
+    </ion-item>
+    <field-error-display [displayError]="isFieldValid('email')" errorMsg="Ingresa un correo válido"></field-error-display>
+
+    <ion-item>
+      <ion-label floating>Dirección</ion-label>
+      <ion-input type="text" formControlName="address" [(ngModel)]="registerForm.addres"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Celular</ion-label>
+      <ion-input type="tel" formControlName="phone" [(ngModel)]="registerForm.phone" maxlength="10"></ion-input>
+    </ion-item>
+    <field-error-display [displayError]="isFieldValid('phone')" errorMsg="Ingresa un número celular válido"></field-error-display>
+
+    <ion-item>
+      <ion-label floating>Clave</ion-label>
+      <ion-input type="password" formControlName="password" [(ngModel)]="registerForm.password" maxlength="20"></ion-input>
+    </ion-item>
+    <field-error-display [displayError]="isFieldValid('password')" errorMsg="La clave debe tener mínimo 6 y máximo 20 caracteres"></field-error-display>
+
+    <div class="check-container">
+      <ion-checkbox color="dark" formControlName="terms"></ion-checkbox>
+      <a (click)="showTerms()">Acepto Políticas</a>
+    </div>
+
+    <button ion-button color="primary" full style="margin-top: 30px" (click)="submit()" type="button" [disabled]="formGroup.invalid">
+      Guardar e Ingresar 
+    </button>
+
+  </form>
+
+
+</ion-content>
