@@ -27983,11 +27983,12 @@ ion-navbar.toolbar {
 
 page-register .radio-description {
   background-color: #FFFFFF;
+  padding: 10px 15px;
 }
 
 page-welcome button.btn-registro {
   position: absolute;
-  bottom: 4rem;
+  bottom: 5rem;
 }
 
 page-welcome button.btn-ingresa {

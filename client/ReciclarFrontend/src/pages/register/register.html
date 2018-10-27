@@ -6,15 +6,15 @@
 
 <ion-content class="container">
 
-  <div>
-      <ion-list radio-group [(ngModel)]="participantType">        
+  <form [formGroup]="formGroup" novalidate style="padding-top: 15px">
+      <ion-list radio-group formControlName="participantType" [(ngModel)]="participantType">        
           <ion-item>
             <ion-label>Yo dono</ion-label>
             <ion-radio value="d"></ion-radio>
           </ion-item>
 
           <div class="radio-description" *ngIf="participantType === 'd'">
-            <span>Si separas tus residuos reciclables, quieres donarlos y obtener descuentos.</span>
+            <span>* Si separas tus residuos reciclables, quieres donarlos y obtener descuentos.</span>
           </div>
         
           <ion-item>
@@ -23,10 +23,13 @@
           </ion-item>
 
           <div class="radio-description" *ngIf="participantType === 'r'">
-              <span>Si recibes material reciclable y puedes ir a recogerlo.</span>
+              <span>* Si recibes material reciclable y puedes ir a recogerlo.</span>
           </div>
         </ion-list>
-  </div>
+
+        <button ion-button color="primary" full style="margin-top: 30px" (click)="submit()" type="button" [disabled]="formGroup.invalid"> Enviar </button>
+
+  </form>
 
 
 </ion-content>
