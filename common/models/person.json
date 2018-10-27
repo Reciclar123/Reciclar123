@@ -1,0 +1,57 @@
+{
+  "name": "Person",
+  "plural": "Persons",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cedula": {
+      "type": "string"
+    },
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "telefono": {
+      "type": "string",
+      "required": true
+    },
+    "ciudad": {
+      "type": "string"
+    },
+    "rol": {
+      "type": "string",
+      "required": true
+    },
+    "gotas": {
+      "type": "number",
+      "required": true,
+      "default": 10
+    },
+    "politicas": {
+      "type": "boolean",
+      "required": true
+    },
+    "fecha": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
