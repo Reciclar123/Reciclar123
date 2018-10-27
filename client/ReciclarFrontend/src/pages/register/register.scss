@@ -7,11 +7,12 @@ page-register {
 
   .radio-description {
     background-color: #FFFFFF;
-    padding: 10px 15px 0px 15px;
+    padding: 12px 15px 0px 15px;
   }
 
   .check-container {
     display: flex;
+    align-items: center;
     padding: 10px 15px;
     margin-top: 20px;
   }
@@ -24,6 +25,15 @@ page-register {
 
   ion-list {
     margin: 0;
+    padding: 0
+  }
+
+  .item-margin-up {
+    margin-top: -30px;
+  }
+
+  ion-item {
+    height: 65px;
   }
 
 }
