@@ -8,4 +8,8 @@ export class ValidationsProvider {
   EMAIL_REGEXP = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;"^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   NUMBER_REGEXP = /^\d+$/;
 
+  validateEmail(email) {
+    return this.EMAIL_REGEXP.test(email);
+  }
+
 }

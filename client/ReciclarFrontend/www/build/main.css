@@ -27981,20 +27981,36 @@ ion-navbar.toolbar {
   background-color: #00507B !important;
 }
 
-.error-msg {
-  color: #a94442;
-  padding: 10px 15px;
-}
-
-page-register .register-form {
+.register-form {
   background-color: #FFFFFF;
   padding-top: 20px;
   border: none;
 }
 
+.error-msg {
+  color: #a94442;
+  padding: 10px 15px;
+}
+
+page-login .container-logo {
+  margin: 20px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+page-login .logo {
+  height: 280px;
+}
+
 page-register .radio-description {
   background-color: #FFFFFF;
-  padding: 10px 15px 0px 15px;
+  padding: 12px 15px 0px 15px;
 }
 
 page-register .check-container {
@@ -28002,6 +28018,10 @@ page-register .check-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 10px 15px;
   margin-top: 20px;
 }
@@ -28014,6 +28034,36 @@ page-register .check-container a {
 
 page-register ion-list {
   margin: 0;
+  padding: 0;
+}
+
+page-register .item-margin-up {
+  margin-top: -30px;
+}
+
+page-register ion-item {
+  height: 65px;
+}
+
+page-reset-pass .container-logo {
+  margin: 25px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+page-reset-pass .logo {
+  height: 300px;
+}
+
+page-reset-pass .container-note {
+  margin: 15px auto;
+  width: 80%;
 }
 
 page-welcome button.btn-registro {

@@ -46,7 +46,7 @@ export class RegisterPage {
         Validators.required
       ]),
       phone: new FormControl('', [
-        Validators.minLength(7),
+        Validators.minLength(10),
         Validators.maxLength(10),
         Validators.required,
         Validators.pattern(this.validProv.NUMBER_REGEXP)
