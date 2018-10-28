@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ResetPassPage } from '../reset-pass/reset-pass';
 import { RequestProvider, ResponseUser } from '../../providers/request/request';
 import { HomePage } from '../home/home';
+import { ValidationsProvider } from '../../providers/validations/validations';
+import { Credentials } from '../../models/credentials.model';
 
 
 @IonicPage()
@@ -26,7 +28,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public request: RequestProvider,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    private validationsProv: ValidationsProvider) {
 
     this.formGroup = new FormGroup({
       username: new FormControl('', [
@@ -39,6 +42,21 @@ export class LoginPage {
         Validators.required
       ])
     });
+  }
+
+  validateCredentials() {
+    const userIsEmail = this.validationsProv.validateEmail(this.loginForm.username);
+    let credentials: Credentials = {
+      password: this.loginForm.password
+    };
+
+    if(userIsEmail) {
+      credentials.email = this.loginForm.username;
+    } else {
+      credentials.username = this.loginForm.username;
+    }
+
+    return credentials;
   }
 
   sendForm() {
@@ -54,13 +72,9 @@ export class LoginPage {
     }
     this.formSubmitAttempt = true;
 
-    const credentials = {
-      email: this.loginForm.username,
-      username: this.loginForm.username,
-      password: this.loginForm.password
-    }
+    const credentialData = this.validateCredentials();
 
-    this.request.checklogin(credentials).subscribe(data => {
+    this.request.checklogin(credentialData).subscribe(data => {
       loader.dismiss();
       console.log('login success', data);
       this.saveSessionUser(data);

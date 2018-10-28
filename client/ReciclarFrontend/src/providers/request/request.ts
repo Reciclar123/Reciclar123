@@ -13,15 +13,9 @@ export class RequestProvider {
   }
 
 	public checklogin( credentials: Credentials ) {
-
-		const data = {
-			email: credentials.email || '',
-      username: credentials.username || '',
-			password: credentials.password      
-		};
 		const headers = new HttpHeaders({"Content-Type": "application/json"});
 		return this.http
-			.post<ResponseUser>(ENV.API_ENDPOINT + ENV.loginMethod, data, {
+			.post<ResponseUser>(ENV.API_ENDPOINT + ENV.loginMethod, credentials, {
 				headers
 			});
 	}

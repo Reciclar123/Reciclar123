@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WelcomePage } from '../pages/welcome/welcome';
@@ -19,12 +17,12 @@ import { TermsModalComponent } from '../components/terms-modal/terms-modal';
 import { LoginPage } from '../pages/login/login';
 import { ResetPassPage } from '../pages/reset-pass/reset-pass';
 import { RequestProvider } from '../providers/request/request';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     WelcomePage,
     RegisterPage,
     LoginPage,
@@ -33,7 +31,7 @@ import { RequestProvider } from '../providers/request/request';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-		FormsModule,
+    FormsModule,
     ReactiveFormsModule,
     ComponentsModule,
     HttpClientModule
@@ -43,7 +41,6 @@ import { RequestProvider } from '../providers/request/request';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     WelcomePage,
     RegisterPage,
     LoginPage,
@@ -54,9 +51,10 @@ import { RequestProvider } from '../providers/request/request';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ValidationsProvider,
-    RequestProvider
+    RequestProvider,
+    UserProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
