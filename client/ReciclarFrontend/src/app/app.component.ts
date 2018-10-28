@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { UserProvider } from '../providers/user/user';
 
@@ -38,7 +37,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      if(this.usrPro.isLogin()) {
+      if (this.usrPro.isLogin()) {
         console.log('usuario logeado');
         this.nav.setRoot(HomePage);
       } else {
@@ -48,10 +47,10 @@ export class MyApp {
     });
   }
 
-	logout() {
-		localStorage.clear();
-		this.initializeApp();
-	}
+  logout() {
+    localStorage.clear();
+    this.initializeApp();
+  }
 
   openPage(page) {
     // Reset the content nav to have just this page
