@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { UserProvider } from '../providers/user/user';
+import { DonatePage } from '../pages/donate/donate';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,6 @@ export class MyApp {
     private usrPro: UserProvider) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
     ];
@@ -43,6 +43,24 @@ export class MyApp {
       } else {
         this.nav.setRoot(WelcomePage);
       }
+
+      // Yo dono
+      this.pages = [
+        { title: 'Inicio', component: HomePage },
+        { title: 'Ajustes', component: HomePage },
+        { title: 'Donar', component: DonatePage },
+        { title: 'Locales', component: HomePage },
+        { title: 'Historico', component: HomePage },
+      ];
+
+      // Yo recojo
+      // this.pages = [
+      //   { title: 'Inicio', component: HomePage },
+      //   { title: 'Donaciones Publicadas', component: HomePage },
+      //   { title: 'Tu lista de Donaciones', component: HomePage },
+      //   { title: 'Recoger', component: HomePage },
+      //   { title: 'Historico', component: HomePage },
+      // ];
 
     });
   }

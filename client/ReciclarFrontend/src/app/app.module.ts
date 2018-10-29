@@ -18,6 +18,7 @@ import { LoginPage } from '../pages/login/login';
 import { ResetPassPage } from '../pages/reset-pass/reset-pass';
 import { RequestProvider } from '../providers/request/request';
 import { UserProvider } from '../providers/user/user';
+import { DonatePage } from '../pages/donate/donate';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserProvider } from '../providers/user/user';
     WelcomePage,
     RegisterPage,
     LoginPage,
-    ResetPassPage
+    ResetPassPage,
+    DonatePage
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { UserProvider } from '../providers/user/user';
     RegisterPage,
     LoginPage,
     ResetPassPage,
+    DonatePage,
     FieldErrorDisplayComponent,
     TermsModalComponent
   ],
