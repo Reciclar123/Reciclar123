@@ -25,7 +25,6 @@
     },
     "recicladorRecolecto": {
       "type": "string",
-      "required": true
     },
     "status": {
       "type": "string",
