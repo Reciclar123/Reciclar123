@@ -39,6 +39,10 @@
       "type": "string",
       "required": true,
       "default": "seleccionado"
+    },
+    "fecha": {
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],

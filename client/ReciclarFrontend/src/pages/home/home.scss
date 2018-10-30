@@ -1,0 +1,16 @@
+page-home {
+    .initial-message {
+        margin: 15px auto;
+        width: 90%;
+        text-align: justify;
+    }
+    .initial-message p {
+        font-size: 16px;
+    }
+
+    .container-video {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+}
