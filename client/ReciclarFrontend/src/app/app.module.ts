@@ -19,6 +19,7 @@ import { ResetPassPage } from '../pages/reset-pass/reset-pass';
 import { RequestProvider } from '../providers/request/request';
 import { UserProvider } from '../providers/user/user';
 import { DonatePage } from '../pages/donate/donate';
+import { DonationFormPage } from '../pages/donation-form/donation-form';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DonatePage } from '../pages/donate/donate';
     RegisterPage,
     LoginPage,
     ResetPassPage,
-    DonatePage
+    DonatePage,
+    DonationFormPage
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { DonatePage } from '../pages/donate/donate';
     LoginPage,
     ResetPassPage,
     DonatePage,
+    DonationFormPage,
     FieldErrorDisplayComponent,
     TermsModalComponent
   ],
