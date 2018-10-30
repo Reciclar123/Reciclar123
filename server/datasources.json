@@ -4,13 +4,13 @@
     "connector": "memory"
   },
   "mongodb": {
-    "host": "localhost",
-    "port": 27017,
-    "url": "",
-    "database": "riwa",
-    "password": "",
+    "host": "ds231643.mlab.com",
+    "port": 31643,
+    "url": "mongodb://greentyuser:greenty123reciclar@ds231643.mlab.com:31643/greenty",
+    "database": "greenty",
+    "password": "greenty123reciclar",
     "name": "mongodb",
-    "user": "root",
+    "user": "greentyuser",
     "connector": "mongodb"
   }
 }
