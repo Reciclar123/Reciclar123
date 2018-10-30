@@ -43,12 +43,11 @@ var DonatePage = /** @class */ (function () {
     };
     DonatePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-donate',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Donar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="empty-message" *ngIf="donationList.length === 0">\n    <span>Aún no tienes registradas donaciones</span>\n  </div>\n\n  <div *ngIf="donationList.length > 0">\n    <ion-list *ngFor="let item of donationList">\n      <ion-item-sliding>\n        <ion-item>\n          <b>{{item.type}}</b> <br>\n          <b>Cantidad:</b> {{item.quantity}} <br>\n          <b>Unidad:</b> {{item.unity}} <br>\n            <b>Estado:</b> {{item.state}}\n        </ion-item>\n        <ion-item-options side="right">\n          <button ion-button color="primary">\n            Editar\n          </button>\n          <button ion-button color="secondary">\n            Eliminar\n          </button>\n        </ion-item-options>\n      </ion-item-sliding>\n      <button ion-button color="primary" full> Entregar</button>\n    </ion-list>\n  </div>\n\n  <ion-fab right middle>\n    <button ion-fab>+</button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/,
+            selector: 'page-donate',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Donar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="empty-message" *ngIf="donationList.length === 0">\n    <span>Aún no tienes registradas donaciones</span>\n  </div>\n\n  <div *ngIf="donationList.length > 0">\n    <ion-list *ngFor="let item of donationList">\n      <ion-item>\n        <ion-item>\n          <b>{{item.type}}</b> <br>\n          <b>Cantidad:</b> {{item.quantity}} <br>\n          <b>Unidad:</b> {{item.unity}} <br>\n            <b>Estado:</b> {{item.state}}\n        </ion-item>\n          <button ion-button color="primary">\n            Editar\n          </button>\n          <button ion-button color="secondary">\n            Eliminar\n          </button>\n      </ion-item>\n      <button ion-button color="primary" full> Entregar</button>\n    </ion-list>\n  </div>\n\n  <ion-fab right middle>\n    <button ion-fab>+</button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], DonatePage);
     return DonatePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=donate.js.map
@@ -587,7 +586,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(162);
@@ -861,7 +860,7 @@ var ComponentsModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -879,10 +878,10 @@ var HomePage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.sanitizer = sanitizer;
         // Yo dono
-        this.initialMessage = 'Con esta App podrás donar tus materiales reciclables y por ellos recibirás “gota” que puedes cambiar por espectaculares promociones de nuestros patrocinadores.';
+        this.initialMessage = 'Con esta App podrás donar tus materiales reciclables y por ellos recibirás "gotas" que puedes cambiar por espectaculares promociones de nuestros patrocinadores.';
         this.urlVideo = 'https://www.youtube.com/embed/5-sWpFCN0C8';
         // Yo recojo
-        // this.initialMessage = 'Con esta App podrás visualizar a donantes de material reciclable programar la recogida del material y evaluar su donación para entregar “gotas” como recompensa.';
+        // this.initialMessage = 'Con esta App podrás visualizar a donantes de material reciclable programar la recogida del material y evaluar su donación para entregar "gotas" como recompensa.';
         // this.urlVideo = 'https://www.youtube.com/embed/5q2HSdgO7CA';
         this.videoUrlSecure = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlVideo);
     }
@@ -890,10 +889,10 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title text-center>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n  <h3 text-center>Bienvenido</h3>\n\n  <div class="initial-message">\n    <p>{{initialMessage}}</p>\n  </div>\n\n  <div class="container-video">\n      <iframe width="350" height="350" [src]="videoUrlSecure" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]])
     ], HomePage);
     return HomePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
