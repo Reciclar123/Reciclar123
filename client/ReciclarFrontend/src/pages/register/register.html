@@ -26,8 +26,13 @@
     </ion-list>
 
     <ion-item class="item-margin-up">
-      <ion-label floating>Nombre</ion-label>
+      <ion-label floating>Nombres y Apellidos</ion-label>
       <ion-input type="text" formControlName="name" [(ngModel)]="registerForm.name"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="registerForm.participantType === 'r'">
+      <ion-label floating>Cédula de Ciudadania</ion-label>
+      <ion-input type="tel" formControlName="identification" [(ngModel)]="registerForm.identification" maxlength="12"></ion-input>
     </ion-item>
 
     <ion-item>
