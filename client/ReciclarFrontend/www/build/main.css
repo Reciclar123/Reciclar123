@@ -28003,6 +28003,21 @@ page-donate .empty-message span {
   font-size: 18px;
 }
 
+page-donate .container-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-donate .list {
+  margin-bottom: 10px;
+}
+
 page-home .initial-message {
   margin: 15px auto;
   width: 90%;

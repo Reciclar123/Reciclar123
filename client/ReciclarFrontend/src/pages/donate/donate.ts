@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Donation } from '../../models/donations.model';
+import { DonationFormPage } from '../donation-form/donation-form';
 
 
 @IonicPage()
@@ -28,9 +29,9 @@ export class DonatePage {
       id: '',
     });
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DonatePage');
+  
+  goToDonationForm() {
+    this.navCtrl.push(DonationFormPage);
   }
 
 }
