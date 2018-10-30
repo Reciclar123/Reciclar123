@@ -8,4 +8,13 @@ page-donate {
         color: white;
         font-size: 18px;
     }
+
+    .container-list {
+        display: flex;
+        align-items: center;
+    }
+
+    .list{
+        margin-bottom: 10px;
+    }
 }

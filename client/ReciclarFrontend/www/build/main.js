@@ -7,6 +7,7 @@ webpackJsonp([5],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DonatePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__donation_form_donation_form__ = __webpack_require__(292);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,6 +17,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var DonatePage = /** @class */ (function () {
@@ -38,16 +40,17 @@ var DonatePage = /** @class */ (function () {
             id: '',
         });
     }
-    DonatePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad DonatePage');
+    DonatePage.prototype.goToDonationForm = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__donation_form_donation_form__["a" /* DonationFormPage */]);
     };
     DonatePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-donate',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Donar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="empty-message" *ngIf="donationList.length === 0">\n    <span>Aún no tienes registradas donaciones</span>\n  </div>\n\n  <div *ngIf="donationList.length > 0">\n    <ion-list *ngFor="let item of donationList">\n      <ion-item>\n        <ion-item>\n          <b>{{item.type}}</b> <br>\n          <b>Cantidad:</b> {{item.quantity}} <br>\n          <b>Unidad:</b> {{item.unity}} <br>\n            <b>Estado:</b> {{item.state}}\n        </ion-item>\n          <button ion-button color="primary">\n            Editar\n          </button>\n          <button ion-button color="secondary">\n            Eliminar\n          </button>\n      </ion-item>\n      <button ion-button color="primary" full> Entregar</button>\n    </ion-list>\n  </div>\n\n  <ion-fab right middle>\n    <button ion-fab>+</button>\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/,
+            selector: 'page-donate',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Donar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="empty-message" *ngIf="donationList.length === 0">\n    <span>Aún no tienes registradas donaciones</span>\n  </div>\n\n  <div *ngIf="donationList.length > 0">\n    <ion-list *ngFor="let item of donationList">\n      <div class="container-list">\n        <ion-item style="width: 70%">\n          <b>{{item.type}}</b>\n          <br>\n          <b>Cantidad:</b> {{item.quantity}}\n          <br>\n          <b>Unidad:</b> {{item.unity}}\n          <br>\n          <b>Estado:</b> {{item.state}}\n        </ion-item>\n        <div style="width: 30%; background-color: white">\n          <button ion-button full color="blue-dark">\n            Editar\n          </button>\n          <button ion-button full style="background-color: red">\n            Eliminar\n          </button>\n        </div>\n      </div>\n      <button ion-button color="secondary" full> Entregar</button>\n    </ion-list>\n  </div>\n\n  <ion-footer>\n    <button ion-button full color="blue-dark" (click)="goToDonationForm()">\n      <span>Adicionar donación</span>\n    </button>\n  </ion-footer>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object])
     ], DonatePage);
     return DonatePage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=donate.js.map
@@ -415,23 +418,27 @@ webpackEmptyAsyncContext.id = 118;
 var map = {
 	"../pages/donate/donate.module": [
 		286,
-		4
+		12
+	],
+	"../pages/donation-form/donation-form.module": [
+		291,
+		7
 	],
 	"../pages/login/login.module": [
 		287,
-		3
+		11
 	],
 	"../pages/register/register.module": [
 		288,
-		2
+		10
 	],
 	"../pages/reset-pass/reset-pass.module": [
 		289,
-		1
+		9
 	],
 	"../pages/welcome/welcome.module": [
 		290,
-		0
+		8
 	]
 };
 function webpackAsyncContext(req) {
@@ -606,12 +613,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_request_request__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_user_user__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_donate_donate__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_donation_form_donation_form__ = __webpack_require__(292);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -644,7 +653,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__pages_register_register__["a" /* RegisterPage */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_login_login__["a" /* LoginPage */],
                 __WEBPACK_IMPORTED_MODULE_16__pages_reset_pass_reset_pass__["a" /* ResetPassPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_donate_donate__["a" /* DonatePage */]
+                __WEBPACK_IMPORTED_MODULE_19__pages_donate_donate__["a" /* DonatePage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_donation_form_donation_form__["a" /* DonationFormPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -654,7 +664,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reset-pass/reset-pass.module#ResetPassPageModule', name: 'ResetPassPage', segment: 'reset-pass', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/donation-form/donation-form.module#DonationFormPageModule', name: 'DonationFormPage', segment: 'donation-form', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_10__angular_forms__["c" /* FormsModule */],
@@ -672,6 +683,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_15__pages_login_login__["a" /* LoginPage */],
                 __WEBPACK_IMPORTED_MODULE_16__pages_reset_pass_reset_pass__["a" /* ResetPassPage */],
                 __WEBPACK_IMPORTED_MODULE_19__pages_donate_donate__["a" /* DonatePage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_donation_form_donation_form__["a" /* DonationFormPage */],
                 __WEBPACK_IMPORTED_MODULE_13__components_field_error_display_field_error_display__["a" /* FieldErrorDisplayComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__components_terms_modal_terms_modal__["a" /* TermsModalComponent */]
             ],
@@ -850,6 +862,46 @@ var ComponentsModule = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=components.module.js.map
+
+/***/ }),
+
+/***/ 292:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DonationFormPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(16);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DonationFormPage = /** @class */ (function () {
+    function DonationFormPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    DonationFormPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad DonationFormPage');
+    };
+    DonationFormPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-donation-form',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donation-form/donation-form.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Donación de Materiales</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  \n</ion-content>\n'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donation-form/donation-form.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object])
+    ], DonationFormPage);
+    return DonationFormPage;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=donation-form.js.map
 
 /***/ }),
 
