@@ -49,6 +49,7 @@
       "defaultFn": "now"
     }
   },
+  "hidden": ["id"],
   "validations": [],
   "relations": {},
   "acls": [
