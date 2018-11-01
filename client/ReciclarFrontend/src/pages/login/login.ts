@@ -81,6 +81,7 @@ export class LoginPage {
       loader.dismiss();
       console.log('login success', data);
       this.userProv.user = data;
+      this.request.generateUserData(data);
       this.navCtrl.setRoot(HomePage);
     },
       error => {

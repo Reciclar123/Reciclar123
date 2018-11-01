@@ -1,10 +1,61 @@
 <ion-header>
   <ion-navbar color="blue-dark">
-    <ion-title>Donación de Materiales</ion-title>
+    <ion-title>Registro de Materiales</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="container">
 
-  
+  <form [formGroup]="formGroup" novalidate class="register-form">
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Lista de materiales</ion-label>
+        <ion-select formControlName="materialType" [(ngModel)]="materialData.materialType">
+          <div *ngFor="let mat of materialList">
+              <ion-option value="{{mat.id}}">{{mat.name}}</ion-option>
+          </div>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label floating>Cantidad</ion-label>
+      <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.quantity"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Unidades</ion-label>
+        <ion-select formControlName="unities" [(ngModel)]="materialData.unities">
+          <div *ngFor="let unit of UnitiesList">
+              <ion-option value="{{unit.id}}">{{unit.name}}</ion-option>
+          </div>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Estado del material</ion-label>
+        <ion-select formControlName="materialState" [(ngModel)]="materialData.materialState">
+          <div *ngFor="let state of materialStatesList">
+              <ion-option value="{{state.id}}">{{state.name}}</ion-option>
+          </div>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label floating>Descripción</ion-label>
+      <ion-textarea class="text-area" formControlName="materialDescription" [(ngModel)]="materialData.materialDescription"></ion-textarea>
+    </ion-item>
+
+    <button ion-button color="primary" full style="margin-top: 30px" (click)="saveMaterial()" type="button" [disabled]="formGroup.invalid">
+      Guardar 
+    </button>
+
+  </form>
+
+
 </ion-content>

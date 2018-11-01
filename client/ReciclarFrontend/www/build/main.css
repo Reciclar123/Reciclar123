@@ -28018,6 +28018,10 @@ page-donate .list {
   margin-bottom: 10px;
 }
 
+page-donation-form .text-area {
+  min-height: 80px;
+}
+
 page-home .initial-message {
   margin: 15px auto;
   width: 90%;

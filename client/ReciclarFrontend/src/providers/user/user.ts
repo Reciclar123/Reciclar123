@@ -24,8 +24,6 @@ export class UserProvider {
 	}
 
 	isLogin() {
-		// TODO:
-		// actualizar el uid de push notifications
 		return localStorage.getItem('user') !== null;
 	}
 

@@ -1,7 +1,9 @@
-export interface Donation {
-    type: string;
+export interface MaterialModel {
+    materialType: string;
     quantity: number;
-    unity: string;
-    state: string;
-    id: string;
+    unities:  string;
+    materialState:  string;
+    materialDescription: string;
+    id?: string;
+    creationDate?: string;
 }

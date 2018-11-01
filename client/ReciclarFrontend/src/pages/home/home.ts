@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserProvider } from '../../providers/user/user';
+import { RequestProvider } from '../../providers/request/request';
+import { UserModel } from '../../models/register-data.model';
 
 @Component({
   selector: 'page-home',
@@ -12,10 +14,15 @@ export class HomePage {
   initialMessage: string;
   urlVideo: string;
   videoUrlSecure: any;
+  user: UserModel;
 
   constructor(public navCtrl: NavController,
     private sanitizer: DomSanitizer,
-    private userProv: UserProvider) {
+    private userProv: UserProvider,
+    private requestPro: RequestProvider) {
+
+    this.user = this.userProv.user;
+
 
     if (this.userProv.user.rol === 'd') {
       // Yo dono
@@ -30,6 +37,10 @@ export class HomePage {
 
     this.videoUrlSecure = this.sanitizer.bypassSecurityTrustResourceUrl(this.urlVideo);
 
+  }
+
+  checkMenuOptions() {
+    this.requestPro.generateUserData(this.user);
   }
 
 }
