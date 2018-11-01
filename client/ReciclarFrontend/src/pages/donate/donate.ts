@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Donation } from '../../models/donations.model';
+import { MaterialModel } from '../../models/donations.model';
 import { DonationFormPage } from '../donation-form/donation-form';
+import { MaterialProvider } from '../../providers/material/material';
 
 
 @IonicPage()
@@ -11,23 +12,12 @@ import { DonationFormPage } from '../donation-form/donation-form';
 })
 export class DonatePage {
 
-  donationList: Array<Donation> = [];
+  donationList: Array<MaterialModel> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.donationList.push({
-      type: 'periodico',
-      quantity: 2,
-      unity: 'cajas',
-      state: 'p',
-      id: '',
-    });
-    this.donationList.push({
-      type: 'papel',
-      quantity: 5,
-      unity: 'kg',
-      state: 'p',
-      id: '',
-    });
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public materialProv: MaterialProvider) {
+    this.donationList = this.materialProv.getMaterialsInLocal();
   }
   
   goToDonationForm() {

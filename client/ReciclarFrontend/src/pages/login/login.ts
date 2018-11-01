@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ResetPassPage } from '../reset-pass/reset-pass';
-import { RequestProvider, ResponseUser } from '../../providers/request/request';
+import { RequestProvider } from '../../providers/request/request';
 import { HomePage } from '../home/home';
 import { ValidationsProvider } from '../../providers/validations/validations';
-import { Credentials } from '../../models/credentials.model';
+import { Credentials, ResponseUser } from '../../models/credentials.model';
+import { UserModel } from '../../models/register-data.model';
+import { UserProvider } from '../../providers/user/user';
 
 
 @IonicPage()
@@ -29,7 +31,8 @@ export class LoginPage {
     public navParams: NavParams,
     public request: RequestProvider,
     public loadingCtrl: LoadingController,
-    private validationsProv: ValidationsProvider) {
+    private validationsProv: ValidationsProvider,
+    private userProv: UserProvider) {
 
     this.formGroup = new FormGroup({
       username: new FormControl('', [
@@ -50,7 +53,7 @@ export class LoginPage {
       password: this.loginForm.password
     };
 
-    if(userIsEmail) {
+    if (userIsEmail) {
       credentials.email = this.loginForm.username;
     } else {
       credentials.username = this.loginForm.username;
@@ -77,7 +80,8 @@ export class LoginPage {
     this.request.checklogin(credentialData).subscribe(data => {
       loader.dismiss();
       console.log('login success', data);
-      this.saveSessionUser(data);
+      this.userProv.user = data;
+      this.request.generateUserData(data);
       this.navCtrl.setRoot(HomePage);
     },
       error => {
@@ -94,12 +98,6 @@ export class LoginPage {
 
   goToResetPass() {
     this.navCtrl.push(ResetPassPage);
-  }
-
-  saveSessionUser(data: ResponseUser) {
-    localStorage.setItem('id', data.id);
-    localStorage.setItem('ttl', data.ttl.toString());
-    localStorage.setItem('userId', data.userId);
   }
 
 }

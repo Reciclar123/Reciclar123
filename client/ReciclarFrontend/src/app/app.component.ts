@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { UserProvider } from '../providers/user/user';
 import { DonatePage } from '../pages/donate/donate';
+import { UserModel } from '../models/register-data.model';
+import { RequestProvider } from '../providers/request/request';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,12 +17,14 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any;
+  userData: UserModel;
 
   pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
+    private requestPro: RequestProvider,
     private usrPro: UserProvider) {
     this.initializeApp();
 
@@ -37,30 +41,20 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      // observable para user
+      this.requestPro.$obsUser.subscribe((data) => {
+        this.userData = data;
+        this.setMenuOptions();
+      });
+
       if (this.usrPro.isLogin()) {
         console.log('usuario logeado');
+        this.userData = this.usrPro.user;
+        this.setMenuOptions();
         this.nav.setRoot(HomePage);
       } else {
         this.nav.setRoot(WelcomePage);
       }
-
-      // Yo dono
-      this.pages = [
-        { title: 'Inicio', component: HomePage },
-        { title: 'Ajustes', component: HomePage },
-        { title: 'Donar', component: DonatePage },
-        { title: 'Locales', component: HomePage },
-        { title: 'Historico', component: HomePage },
-      ];
-
-      // Yo recojo
-      // this.pages = [
-      //   { title: 'Inicio', component: HomePage },
-      //   { title: 'Donaciones Publicadas', component: HomePage },
-      //   { title: 'Tu lista de Donaciones', component: HomePage },
-      //   { title: 'Recoger', component: HomePage },
-      //   { title: 'Historico', component: HomePage },
-      // ];
 
     });
   }
@@ -75,4 +69,27 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  setMenuOptions() {
+    if (this.userData.rol === 'd') {
+      // Yo dono
+      this.pages = [
+        { title: 'Inicio', component: HomePage },
+        { title: 'Ajustes', component: HomePage },
+        { title: 'Donar', component: DonatePage },
+        { title: 'Locales', component: HomePage },
+        { title: 'Historico', component: HomePage },
+      ];
+    } else if (this.userData.rol === 'r') {
+      // Yo recojo
+      this.pages = [
+        { title: 'Inicio', component: HomePage },
+        { title: 'Donaciones Publicadas', component: HomePage },
+        { title: 'Tu lista de Donaciones', component: HomePage },
+        { title: 'Recoger', component: HomePage },
+        { title: 'Historico', component: HomePage },
+      ];
+    }
+  }
+
 }
