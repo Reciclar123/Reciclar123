@@ -63,11 +63,7 @@
     "dataSource": "mongodb",
     "public": true
   },
-  "tipoMaterial": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "UnidadesTipoMaterial": {
+  "tiposMaterial": {
     "dataSource": "mongodb",
     "public": true
   }

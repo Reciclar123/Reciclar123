@@ -35,7 +35,18 @@
 {
       "id" : "ad1d45028",
       "descripcion" : "telas",
-      "factorMaterial" : ""
+      "factorMaterial" : "",
+      "unidades" :[ {
+        "id": 1,
+        "descripcion" : "bolsa grande",
+        "gotasRecompensa" : 100
+      },
+      {
+        "id": 2,
+        "descripcion" : "bolsa grande",
+        "gotasRecompensa" : 100
+      }
+    ]
 
 },
 "unidades" :

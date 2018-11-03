@@ -40,33 +40,105 @@ module.exports = function(Person) {
 
  Person.beforeRemote( 'create', function( ctx, modelInstance, next) {
     ctx.req.body.pass = ctx.req.body.password;
+    ctx.req.body.addressP = ctx.req.body.address;
+   //ctx.req.body.unsetAttribute('address');
     next();
 });
 
- Person.observe('after save', function(ctx, next) {
+Person.observe('after save', function(ctx, next) {
 
-    if (ctx.isNewInstance !== undefined) { //new user
+   if (ctx.isNewInstance !== undefined) { //new user
 
       Person.login({"username" : ctx.instance.username,"password" : ctx.instance.pass}, (loginErr, loginToken)=>
+     {
+
+         if (loginToken) {
+
+            ctx.instance.personId = loginToken.personId;
+            ctx.instance.ttl = loginToken.ttl;
+            ctx.instance.tokenId = loginToken.id;
+
+            //crear addressnew
+            if (ctx.instance.addressP) {
+              let AdressPerson = app.models.AddressPerson;
+             AdressPerson.create({
+                 personId : ctx.instance.id,
+                 address : ctx.instance.addressP.address,
+                 days : ctx.instance.addressP.days
+             },(e,addr)=>{
+                     if(!e){
+
+                        ctx.instance.addressPerson = addr ;
+
+                     }else {
+                         ctx.instance.addressPerson = "error";
+                     }
+
+                     ctx.instance.unsetAttribute('addressP');
+                                   next();
+
+
+
+             });
+
+
+            }
+
+
+
+         }else {
+
+           next();
+         }
+     });
+   }else {
+     delete ctx.instance.pass;
+      next();
+   }
+
+});
+
+/* Person.observe('after save', async (ctx, next)=> {
+
+    if (ctx.isNewInstance !== undefined) { //new user
+      let addressnew = null;
+      if (ctx.instance.addressPerson !== null) {
+          let    addressPerson = app.models.addressPerson;
+           addressnew = await addressPerson.create({
+              personId : ctx.instance.id,
+              address : ctx.instance.addressPerson.address,
+              days : ctx.instance.addressPerson.days
+          },(e,addr)=>{ if(!e)console.log(addr);});
+
+          if(addressnew)
+          {
+             let address = [];
+             address.push(addressnew);
+             console.log(address);
+             ctx.instance.updateAttributes({address: address});
+          }
+          //ctx.instance.unsetAttribute('addressPerson');
+      }
+
+     // create login
+     let login = await Person.login({"username" : ctx.instance.username,"password" : ctx.instance.pass}, (loginErr, loginToken)=>
       {
 
           if (loginToken) {
              ctx.instance.personId = loginToken.personId;
              ctx.instance.ttl = loginToken.ttl;
              ctx.instance.tokenId = loginToken.id;
-
              next();
           }else {
-
             next();
           }
       });
+
     }else {
-      delete ctx.instance.pass;
        next();
     }
 
 });
 
-
+*/
 };
