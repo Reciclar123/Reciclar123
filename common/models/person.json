@@ -6,6 +6,12 @@
   "options": {
     "validateUpsert": true
   },
+  "hidden": [
+    "id",
+    "pass",
+    "realm",
+    "created"
+  ],
   "properties": {
     "cedula": {
       "type": "string"
@@ -18,15 +24,15 @@
       "type": "string",
       "required": true,
       "index": {
-      "unique": true
-    }
+        "unique": true
+      }
     },
     "telefono": {
       "type": "string",
       "required": true,
       "index": {
-      "unique": true
-    }
+        "unique": true
+      }
     },
     "ciudad": {
       "type": "string"
@@ -49,15 +55,31 @@
       "defaultFn": "now"
     }
   },
-  "hidden": ["id"],
   "validations": [],
-  "relations": {},
+  "relations": {
+    "address": {
+      "type": "hasMany",
+      "model": "AddressPerson",
+      "foreignKey": "personId"
+    },
+    "materiales": {
+      "type": "hasMany",
+      "model": "MaterialPerson",
+      "foreignKey": "personId"
+    }
+  },
   "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "DENY"
+      "principalId": "$owner",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

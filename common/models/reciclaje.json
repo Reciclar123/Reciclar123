@@ -12,8 +12,7 @@
       "required": true
     },
     "recicladorRecolecto": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "materiales": {
       "type": [
@@ -22,12 +21,7 @@
       "required": true
     },
     "gotasRedimir": {
-      "type": "number",
-      "required": true
-    },
-    "porcentajeVolumen": {
-      "type": "number",
-      "required": true
+      "type": "number"
     },
     "calificacionVolumen": {
       "type": "number"
@@ -37,7 +31,6 @@
     },
     "status": {
       "type": "string",
-      "required": true,
       "default": "seleccionado"
     },
     "fecha": {

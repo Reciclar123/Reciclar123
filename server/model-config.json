@@ -43,15 +43,7 @@
     "dataSource": "mongodb",
     "public": false
   },
-  "Person": {
-    "dataSource": "mongodb",
-    "public": true
-  },
   "AddressPerson": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "TipoMaterial": {
     "dataSource": "mongodb",
     "public": true
   },
@@ -68,6 +60,14 @@
     "public": true
   },
   "PromosRedimidas": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "tipoMaterial": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "UnidadesTipoMaterial": {
     "dataSource": "mongodb",
     "public": true
   }

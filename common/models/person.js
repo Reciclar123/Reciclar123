@@ -4,25 +4,32 @@ var app = require('../../server/server');
 
 module.exports = function(Person) {
 
-  Person.validatesUniquenessOf('telefono','email','username');
+  //Person.validatesUniquenessOf('telefono','email','username');
 
   Person.afterRemote('login', function(ctx, modelInstance, next) {
     if (ctx.result)
     {
-         Person.findById(ctx.result.userId,(error,p)=>{
+         Person.findById(ctx.result.userId,{include: [
+           {relation: 'address',scope: {fields:['id','address','days']} }]},(error,p)=>{
          if (!error ) {
+              var p = p.toJSON()
              ctx.result.cedula=  p.cedula;
              ctx.result.nombre=  p.nombre;
+             ctx.result.email=  p.email;
+             ctx.result.telefono=  p.telefono;
              ctx.result.ciudad=  p.ciudad;
              ctx.result.rol=  p.rol;
              ctx.result.gotas=  p.gotas;
+             ctx.result.politicas =  p.politicas;
              ctx.result.fecha=  p.fecha;
-             ctx.result.realm=  p.realm;
              ctx.result.username=  p.username;
-             ctx.result.emailVerified = p.emailVerified;
-             ctx.result.telefono=  p.telefono;
-             ctx.result.email=  p.email;
+             ctx.result.personId = ctx.result.userId;
              ctx.result.tokenId = ctx.result.id;
+             ctx.result.address = p.address;
+             ctx.result.unsetAttribute('id');
+             ctx.result.unsetAttribute('userId');
+             ctx.result.unsetAttribute('created');
+
 
           }
       next();
@@ -31,53 +38,35 @@ module.exports = function(Person) {
  next();
  });
 
+ Person.beforeRemote( 'create', function( ctx, modelInstance, next) {
+    ctx.req.body.pass = ctx.req.body.password;
+    next();
+});
+
  Person.observe('after save', function(ctx, next) {
+
     if (ctx.isNewInstance !== undefined) { //new user
-      console.log( Person.hashPassword(ctx.instance.password));
-      Person.login({"username" : ctx.instance.username,"password" : Person.hashPassword(ctx.instance.password)}, (loginErr, loginToken)=>
+
+      Person.login({"username" : ctx.instance.username,"password" : ctx.instance.pass}, (loginErr, loginToken)=>
       {
 
           if (loginToken) {
-             ctx.instance.userId= loginToken.userId;
-             ctx.instance.ttl= loginToken.ttl;
-             ctx.instance.tokenId= loginToken.id;
+             ctx.instance.personId = loginToken.personId;
+             ctx.instance.ttl = loginToken.ttl;
+             ctx.instance.tokenId = loginToken.id;
 
              next();
           }else {
+
             next();
           }
       });
     }else {
+      delete ctx.instance.pass;
        next();
     }
 
 });
-/*
-     Person.observe('after save', async (ctx,next)=> {
 
-        if (ctx.isNewInstance !== undefined) { //new user
-          ctx.instance.userId = "";
-
-        let login = await  Person.login({"username" : "string","password" : "string"}, (loginErr, loginToken)=>
-           {
-               if (loginToken) {
-
-                  ctx.instance.userId = loginToken.userId +"";
-                 //  ctx.instance.id= loginToken.id;
-                  ctx.instance.ttl = loginToken.ttl +"";
-
-                  console.log("login",ctx.instance.userId);
-                  console.log(loginToken);
-
-                  return ;
-               }
-               return;
-           });
-
-        }else return;
-});
-
-
-*/
 
 };

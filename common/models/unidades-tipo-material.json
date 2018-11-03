@@ -1,37 +1,31 @@
 {
-  "name": "AddressPerson",
-  "plural": "AddressPerson",
+  "name": "UnidadesTipoMaterial",
+  "plural": "Unidades",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "personId": {
+    "tipoMaterialId": {
       "type": "string",
       "required": true
     },
-    "address": {
+    "descripcion": {
       "type": "string",
       "required": true
     },
-    "days": {
-      "type": "object",
+    "gotasRecompensa": {
+      "type": "number",
       "required": true
-    },
-    "festivos": {
-      "type": "boolean",
-      "default": true
     }
   },
   "validations": [],
-  "relations": {
-    "person": {
+  "relations": {  "person": {
       "type": "belongsTo",
-      "model": "Person",
-      "foreignKey": "personId"
-    }
-  },
+      "model": "tipoMaterial",
+      "foreignKey": "tipoMaterialId"
+    }},
   "acls": [
     {
       "accessType": "WRITE",
