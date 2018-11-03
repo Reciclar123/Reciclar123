@@ -1,0 +1,29 @@
+{
+  "name": "tiposMaterial",
+  "plural": "TiposMaterial",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "descripcion": {
+      "type": "string",
+      "required": true
+    },
+    "factorMaterial": {
+      "type": "number",
+      "required": true
+    },
+    "unidades": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
