@@ -27992,6 +27992,54 @@ ion-navbar.toolbar {
   padding: 10px 15px;
 }
 
+page-donate .empty-message {
+  margin: 15px auto;
+  width: 80%;
+  text-align: center;
+}
+
+page-donate .empty-message span {
+  color: white;
+  font-size: 18px;
+}
+
+page-donate .container-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-donate .list {
+  margin-bottom: 10px;
+}
+
+page-home .initial-message {
+  margin: 15px auto;
+  width: 90%;
+  text-align: justify;
+}
+
+page-home .initial-message p {
+  font-size: 16px;
+}
+
+page-home .container-video {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 page-login .container-logo {
   margin: 20px 0;
   display: -webkit-box;

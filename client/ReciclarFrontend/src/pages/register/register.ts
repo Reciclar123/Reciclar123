@@ -18,6 +18,7 @@ export class RegisterPage {
 
   registerForm = {
     participantType: '',
+    identification: '',
     name: '',
     email: '',
     address: '',
@@ -31,12 +32,20 @@ export class RegisterPage {
     public validProv: ValidationsProvider,
     public modalCtrl: ModalController) {
 
+    const identificationValidators = [
+      Validators.minLength(6),
+      Validators.maxLength(12),
+      Validators.required,
+      Validators.pattern(this.validProv.NUMBER_REGEXP)
+    ]
+
     this.formGroup = new FormGroup({
       participantType: new FormControl('', [Validators.required]),
       name: new FormControl('', [
-        Validators.minLength(3),
+        Validators.minLength(6),
         Validators.required
       ]),
+      identification: new FormControl('', (this.registerForm.participantType === 'r') ? identificationValidators :  null),
       email: new FormControl('', [
         Validators.required,
         Validators.pattern(this.validProv.EMAIL_REGEXP)
@@ -60,7 +69,7 @@ export class RegisterPage {
     });
   }
 
-  onFormSubmit() {
+  submit() {
     this.formSubmitAttempt = false;
     if (this.formGroup.invalid) {
       return;
