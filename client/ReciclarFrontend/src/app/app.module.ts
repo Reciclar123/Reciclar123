@@ -20,6 +20,7 @@ import { RequestProvider } from '../providers/request/request';
 import { UserProvider } from '../providers/user/user';
 import { DonatePage } from '../pages/donate/donate';
 import { DonationFormPage } from '../pages/donation-form/donation-form';
+import { MaterialProvider } from '../providers/material/material';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { DonationFormPage } from '../pages/donation-form/donation-form';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ValidationsProvider,
     RequestProvider,
-    UserProvider
+    UserProvider,
+    MaterialProvider
   ]
 })
 export class AppModule { }

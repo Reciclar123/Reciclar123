@@ -17,10 +17,7 @@
 coverage
 node_modules
 npm-debug.log
-<<<<<<< HEAD
-=======
 sonarlint
->>>>>>> develop
 
 ### Ionic3 ###
 # Log an tmp data
@@ -39,6 +36,7 @@ temp/
 
 # Preprocessors cache files
 .sourcemaps/
+client/ReciclarFrontend/.sourcemaps/
 .sass-cache/
 .tmp/
 hooks/
@@ -49,6 +47,7 @@ plugins/
 plugins/android.json
 plugins/ios.json
 www/
+client/ReciclarFrontend/www/
 
 # Trash data
 $RECYCLE.BIN/
