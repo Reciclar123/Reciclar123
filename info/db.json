@@ -34,8 +34,8 @@
 "TipoMaterial":
 {
       "id" : "ad1d45028",
-      "descripcion" : "telas",
-      "factorMaterial" : "",
+      "descripcion" : "carton",
+      "factorMaterial" : 1.2,
       "unidades" :[ {
         "id": 1,
         "descripcion" : "bolsa grande",
