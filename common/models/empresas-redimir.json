@@ -11,7 +11,13 @@
       "type": "string",
       "required": true
     },
-    "puntos": {
+    "locales": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    },
+    "imagesPublicidad": {
       "type": [
         "object"
       ],
@@ -19,7 +25,7 @@
     },
     "status": {
       "type": "string",
-      "required": true
+      "default" : "activo"
     }
   },
   "validations": [],
