@@ -14,22 +14,38 @@ module.exports = function(Reciclaje) {
          }
 
         const Material = app.models.MaterialPerson;
-        const TipoMaterial = app.models.tipoMaterial;
-       reciclaje = reciclaje.toJSON();
-
+        const TipoMaterial = app.models.tiposMaterial;
+        reciclaje = reciclaje.toJSON();
 
         Material.find(
         {where:{ or: reciclaje.materiales}},(error,materiales)=>{
            if (!error ) {
-            // console.log(materiales);
-              for (var i = 0; i < materiales.length; i++) {
-                  var material = materiales[i];
-                  let tipo = "";
 
-                result.push( {id: material.id,tipo:"tipo material"} );
-              }
+              let tiposMaterial = [];
+              for (var i = 0; i < materiales.length; i++)
+                  tiposMaterial.push({id:materiales[i].tipoId})
 
-               cb(null,result,id);
+              TipoMaterial.find({where:{ or: tiposMaterial}},(er,tipos)=>{
+
+                    if (!er) {
+
+                      for (var i = 0; i < materiales.length; i++)
+                      {
+                         let material = materiales[i];
+                         let tipoOb = tipos[tipos.findIndex(x => x.id == material.tipoId)];
+                         let tipo =  (tipoOb) ? tipoOb.descripcion : 'Mixto';
+                         let id = material.id;
+                         let unidadOb = (tipoOb) ?  tipoOb.unidades[tipoOb.unidades.findIndex(x => x.id == material.unidadId)] : null;
+                         let unidades = (unidadOb) ? unidadOb.descripcion : 'Caja pequeña' ;
+                        result.push({id,tipo,unidades});
+                      }
+
+                    }
+
+                  cb(null,result,id);
+              });
+
+
            }
            else {
               cb(null,result);
@@ -84,7 +100,7 @@ module.exports = function(Reciclaje) {
   accepts: [
     {arg: 'id', type: 'string', required: true}
   ],
-  returns: [{arg: 'materiales', type: 'array'},{arg: 'id', type: 'string'}],
+  returns: [{arg: 'materiales', type: 'array'},{arg: 'reciclajeid', type: 'string'}],
   http: {path: '/:id/recoger', verb: 'get'}
 }
 );

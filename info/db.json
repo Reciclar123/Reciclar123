@@ -87,7 +87,7 @@
                 "lat": 12354,
                 "lng" : -2324,
                  "promociones" :[
-                                    {  "promocion" : "2 x 1 producto a","valorGotas":23 }
+                                    {  "promocion" : "2 x 1 producto a","valorGotas":23 },
                                     {  "promocion" : "25% producto b","valorGotas":123 }
                                 ],
                 "status" : "activo"
@@ -97,7 +97,7 @@
                 "lat": 354,
                 "lng" : -2324,
                  "promociones" :[
-                                    {  "promocion" : "11% producto a","valorGotas":23 }
+                                    {  "promocion" : "11% producto a","valorGotas":23 },
                                     {  "promocion" : "25% producto b","valorGotas":123 }
                                 ],
                 "status" : "activo"
@@ -106,7 +106,7 @@
     "imagesPublicidad" :[
        {"src" : "http://url,com/imagen.png"},
        {"src" : "http://url,com/imagen.png"},
-       {"src" : "http://url,com/imagen.png"},
+       {"src" : "http://url,com/imagen.png"}
     ],
     "status" : "activo"
 },
