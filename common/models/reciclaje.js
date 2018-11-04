@@ -19,7 +19,7 @@ module.exports = function(Reciclaje) {
 
         Material.find(
         {where:{ or: reciclaje.materiales}},(error,materiales)=>{
-           if (!error ) {
+           if (!error && materiales) {
 
 
         let tiposMaterial = [];
@@ -38,6 +38,8 @@ module.exports = function(Reciclaje) {
 
                       if (!er) {
 
+
+                       let gotasRedimir = 0;
                         for (var i = 0; i < materiales.length; i++)
                         {
                            let material = materiales[i];
@@ -46,15 +48,21 @@ module.exports = function(Reciclaje) {
                            let id = material.id;
                            let unidadOb = (tipoOb) ?  tipoOb.unidades[tipoOb.unidades.findIndex(x => x.id == material.unidadId)] : null;
                            let unidades = (unidadOb) ? unidadOb.descripcion : 'Caja pequeña' ;
+                           if (unidadOb) {
+                                gotasRedimir+= unidadOb.gotasRecompensa;
+                           }
                           result.push({id,tipo,unidades});
                         }
+
                         reciclaje.status = "recogido";
+                        reciclaje.gotasRedimir = gotasRedimir;
                         Reciclaje.upsert(reciclaje);
                           cb(null,result,id);
 
                       }else {
-
-                         cb(null,er);
+                        var errorm = new Error("No se encuentra el tipo Material");
+                        errorm.status = 401;
+                        cb(errorm);;
                       }
 
                 });
@@ -65,7 +73,10 @@ module.exports = function(Reciclaje) {
 
            }
            else {
-              cb(null,error);
+             var errorm = new Error("No se encuentra los materiales");
+             errorm.status = 401;
+             cb(errorm);
+
            }
         });
 
@@ -77,21 +88,42 @@ module.exports = function(Reciclaje) {
     }
 
 
-    Reciclaje.calificar = async function(data, cb) {
+    Reciclaje.calificar = function(data, cb) {
 
-        const reciclaje = await Reciclaje.findById(data.id);
-      //  console.log(reciclaje.materiales);
-        let gotasRedimir = Math.round(Math.random());
-         //reciclaje.updateAttributes({gotasRedimir,calificacionEstado,calificacionVolumen,recicladorRecolecto},(err,data)=>{
-          //    if (!err) {
-            //  data;
-              //}
-              let calificacionEstado = data.calificacionEstado;
-              let calificacionVolumen = data.calificacionVolumen;
-              let recicladorRecolecto = data.recicladorRecolecto;
-              let id = data.id;
+         Reciclaje.findById(data.id,(err,reciclaje)=>{
 
-              cb(null,{gotasRedimir,calificacionEstado,calificacionVolumen,recicladorRecolecto,id});
+           if (!err && reciclaje) {
+
+             //changue gotas donador
+             const Person = app.models.Person;
+             Person.findById(reciclaje.personId,(error,person)=>{
+
+                  if (!error && person) {
+
+                      let calificacionEstado = data.calificacionEstado;
+                      let calificacionVolumen = data.calificacionVolumen;
+                      let recicladorRecolecto = data.recicladorRecolecto;
+                      let gotasRedimir = reciclaje.gotasRedimir*calificacionEstado*calificacionVolumen;
+                      let id = data.id;
+                      person.gotas = person.gotas + gotasRedimir;
+                      Person.upsert(person);
+
+                      cb(null,{calificacionEstado,calificacionVolumen,recicladorRecolecto,id});
+
+                  }else {
+                    var errorm = new Error("No se encontro al donador");
+                    errorm.status = 401;
+                    cb(errorm);
+                  }
+             });
+
+
+           }else {
+             var errorm = new Error("No se encuentra el reciclaje");
+             errorm.status = 401;
+             cb(errorm);
+           }
+        });
 
          //});
     }

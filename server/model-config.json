@@ -66,5 +66,8 @@
   "tiposMaterial": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "Email": {
+    "dataSource": "Email"
   }
 }

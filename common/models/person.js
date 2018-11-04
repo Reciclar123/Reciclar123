@@ -49,6 +49,15 @@ Person.observe('after save', function(ctx, next) {
 
    if (ctx.isNewInstance !== undefined) { //new user
 
+     /*Person.app.models.Email.send({
+      to: ctx.instance.email,
+      from: 'greentyapp@gmail.com',
+      subject: 'Registro',
+      text: 'Gracias por tu registro',
+      html: 'my <em>Bienvenido a greenty(ciudad verde ) </em>'
+    });*/
+
+
       Person.login({"username" : ctx.instance.username,"password" : ctx.instance.pass}, (loginErr, loginToken)=>
      {
 
@@ -75,7 +84,8 @@ Person.observe('after save', function(ctx, next) {
                      }
 
                      ctx.instance.unsetAttribute('addressP');
-                                   next();
+
+                    next();
 
 
 
@@ -91,8 +101,11 @@ Person.observe('after save', function(ctx, next) {
            next();
          }
      });
+
+
+
+
    }else {
-     delete ctx.instance.pass;
       next();
    }
 
