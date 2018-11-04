@@ -6,11 +6,11 @@ module.exports = function(Reciclaje) {
 
   Reciclaje.recoger =  function(id, cb) {
     let result = [];
-     Reciclaje.findById(id,  (err, reciclaje)=>{
+     Reciclaje.findById(id,  (err, reciclaje)=>{ // si encuentra reciclaje
 
        if (err || !reciclaje)
          {
-          cb(null, {"change":false,"err":"no-send"})
+          cb(null,err);
          }
 
         const Material = app.models.MaterialPerson;
@@ -21,34 +21,51 @@ module.exports = function(Reciclaje) {
         {where:{ or: reciclaje.materiales}},(error,materiales)=>{
            if (!error ) {
 
-              let tiposMaterial = [];
-              for (var i = 0; i < materiales.length; i++)
+
+        let tiposMaterial = [];
+
+        for (var i = 0; i < materiales.length; i++)  //searh TipoMaterial
                   tiposMaterial.push({id:materiales[i].tipoId})
 
-              TipoMaterial.find({where:{ or: tiposMaterial}},(er,tipos)=>{
+          //update models
+         Material.updateAll({
+              or: reciclaje.materiales
+          },{status:'entregado',recicladorRecolecto:reciclaje.recicladorRecolecto},(errsave,info)=>{
 
-                    if (!er) {
+              if (!errsave) {
 
-                      for (var i = 0; i < materiales.length; i++)
-                      {
-                         let material = materiales[i];
-                         let tipoOb = tipos[tipos.findIndex(x => x.id == material.tipoId)];
-                         let tipo =  (tipoOb) ? tipoOb.descripcion : 'Mixto';
-                         let id = material.id;
-                         let unidadOb = (tipoOb) ?  tipoOb.unidades[tipoOb.unidades.findIndex(x => x.id == material.unidadId)] : null;
-                         let unidades = (unidadOb) ? unidadOb.descripcion : 'Caja pequeña' ;
-                        result.push({id,tipo,unidades});
+                TipoMaterial.find({where:{ or: tiposMaterial}},(er,tipos)=>{
+
+                      if (!er) {
+
+                        for (var i = 0; i < materiales.length; i++)
+                        {
+                           let material = materiales[i];
+                           let tipoOb = tipos[tipos.findIndex(x => x.id == material.tipoId)];
+                           let tipo =  (tipoOb) ? tipoOb.descripcion : 'Mixto';
+                           let id = material.id;
+                           let unidadOb = (tipoOb) ?  tipoOb.unidades[tipoOb.unidades.findIndex(x => x.id == material.unidadId)] : null;
+                           let unidades = (unidadOb) ? unidadOb.descripcion : 'Caja pequeña' ;
+                          result.push({id,tipo,unidades});
+                        }
+                        reciclaje.status = "recogido";
+                        Reciclaje.upsert(reciclaje);
+                          cb(null,result,id);
+
+                      }else {
+
+                         cb(null,er);
                       }
 
-                    }
+                });
 
-                  cb(null,result,id);
-              });
+              }
+          });
 
 
            }
            else {
-              cb(null,result);
+              cb(null,error);
            }
         });
 
