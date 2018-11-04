@@ -8,6 +8,10 @@ Existe un tercer actor que son los patrocinadores quienes publicitan en la app y
 
 Consume los servicios alojados en https://greenty.herokuapp.com, los wireframes del proyecto se encuentran en la carpeta DocumentosProyecto/Wireframes, el backend está en la carpeta server y el front  está en la carpeta client.
 
+# manage service
+
+[Documento](https://github.com/Reciclar123/Reciclar123/tree/master/DocumentosProyecto/Servicios.pdf)
+
 # Instalacion #
 
 El proyecto se dividio en front y server, cada parte tiene su propia aplicacion
