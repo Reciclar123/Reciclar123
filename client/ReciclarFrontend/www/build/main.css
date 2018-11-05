@@ -27992,6 +27992,17 @@ ion-navbar.toolbar {
   padding: 10px 15px;
 }
 
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.initial-message {
+  margin: 15px auto;
+  width: 90%;
+  text-align: justify;
+}
+
 page-donate .empty-message {
   margin: 15px auto;
   width: 80%;
@@ -28019,13 +28030,20 @@ page-donate .list {
 }
 
 page-donation-form .text-area {
-  min-height: 80px;
+  min-height: 60px;
 }
 
-page-home .initial-message {
-  margin: 15px auto;
-  width: 90%;
-  text-align: justify;
+page-donation-form ion-list {
+  margin: 0;
+  padding: 0;
+}
+
+page-donation-form .item-margin-up {
+  margin-top: -30px;
+}
+
+page-donation-form ion-item {
+  height: 65px;
 }
 
 page-home .initial-message p {
@@ -28116,6 +28134,10 @@ page-reset-pass .logo {
 page-reset-pass .container-note {
   margin: 15px auto;
   width: 80%;
+}
+
+page-settings .initial-message p {
+  font-size: 16px;
 }
 
 page-welcome button.btn-registro {

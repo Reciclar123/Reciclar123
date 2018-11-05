@@ -21,6 +21,7 @@ import { UserProvider } from '../providers/user/user';
 import { DonatePage } from '../pages/donate/donate';
 import { DonationFormPage } from '../pages/donation-form/donation-form';
 import { MaterialProvider } from '../providers/material/material';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MaterialProvider } from '../providers/material/material';
     LoginPage,
     ResetPassPage,
     DonatePage,
-    DonationFormPage
+    DonationFormPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { MaterialProvider } from '../providers/material/material';
     ResetPassPage,
     DonatePage,
     DonationFormPage,
+    SettingsPage,
     FieldErrorDisplayComponent,
     TermsModalComponent
   ],

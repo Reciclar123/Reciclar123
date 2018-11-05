@@ -1,5 +1,18 @@
 page-donation-form {
     .text-area {
-        min-height: 80px;
+        min-height: 60px;
     }
+
+  ion-list {
+    margin: 0;
+    padding: 0
+  }
+
+  .item-margin-up {
+    margin-top: -30px;
+  }
+
+  ion-item {
+    height: 65px;
+  }
 }

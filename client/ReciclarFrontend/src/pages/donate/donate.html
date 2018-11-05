@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar color="blue-dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Donar</ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,28 +17,31 @@
     <ion-list *ngFor="let item of donationList">
       <div class="container-list">
         <ion-item style="width: 70%">
-          <b>{{ materialProv.getMaterialValuebyId(item.materialType) }}</b><br>
-          <b>Cantidad:</b> {{ item.quantity }}<br>
-          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.unities) }}<br>
-          <b>Estado:</b> {{ materialProv.getMaterialStatesValuebyId(item.materialState) }}<br>
-          {{ item.materialDescription }}
+          <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>
+          <br>
+          <b>Cantidad:</b> {{ item.cantidad }}
+          <br>
+          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}
+          <br>
+          <b>Estado:</b> {{ item.estado }}
+          <br> {{ item.descripcion }}
         </ion-item>
         <div style="width: 30%; background-color: white">
-          <button ion-button full color="blue-dark">
+          <button ion-button full color="blue-dark" (click)="editMaterial(item)">
             Editar
           </button>
-          <button ion-button full style="background-color: red">
+          <button ion-button full style="background-color: red" (click)="deleteMaterial(item.id)">
             Eliminar
           </button>
         </div>
       </div>
-      <button ion-button color="secondary" full> Entregar</button>
     </ion-list>
   </div>
 
-  <ion-footer>
+  <ion-footer class="sticky">
+    <button ion-button color="secondary" full *ngIf="donationList.length > 0"> Entregar donación</button>
     <button ion-button full color="blue-dark" (click)="goToDonationForm()">
-      <span>Adicionar donación</span>
+      <span>Adicionar Material</span>
     </button>
   </ion-footer>
 
