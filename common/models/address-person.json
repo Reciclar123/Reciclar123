@@ -30,6 +30,11 @@
       "type": "belongsTo",
       "model": "Person",
       "foreignKey": "personId"
+    },
+    "material": {
+      "type": "belongsTo",
+      "model": "MaterialPerson",
+      "foreignKey": "addressRecoleccionId"
     }
   },
   "acls": [

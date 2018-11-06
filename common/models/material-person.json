@@ -53,6 +53,11 @@
       "type": "hasMany",
       "model": "tipoMaterial",
       "foreignKey": "tipoId"
+    },
+    "address": {
+      "type": "hasMany",
+      "model": "AdressPerson",
+      "foreignKey": "addressRecoleccionId"
     }
   },
   "acls": [
