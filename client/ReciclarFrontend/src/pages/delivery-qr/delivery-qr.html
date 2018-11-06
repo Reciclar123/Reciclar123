@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="blue-dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Entregar Donación</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="container">
+
+  <ion-card>
+    <div class="qr-message">
+      "Yo recojo" escanea su código QR y obtiene la información sobre lo que usted le esta entregando y así le entrega sus puntos,
+      de acuerdo a lo entregado.
+    </div>
+
+    <div class="qr-container">
+      <img [src]="urlQR" alt="QRCode" align="center" />
+    </div>
+  </ion-card>
+
+
+</ion-content>

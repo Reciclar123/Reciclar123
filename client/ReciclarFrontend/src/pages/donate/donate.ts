@@ -4,6 +4,7 @@ import { MaterialModel } from '../../models/donations.model';
 import { DonationFormPage } from '../donation-form/donation-form';
 import { MaterialProvider } from '../../providers/material/material';
 import { RequestProvider } from '../../providers/request/request';
+import { DeliveryDonationPage } from '../delivery-donation/delivery-donation';
 
 
 @IonicPage()
@@ -28,6 +29,10 @@ export class DonatePage {
   
   goToDonationForm() {
     this.navCtrl.push(DonationFormPage);
+  }
+  
+  goToDeliveryDonationForm() {
+    this.navCtrl.push(DeliveryDonationPage);
   }
 
   editMaterial(material: MaterialModel) {

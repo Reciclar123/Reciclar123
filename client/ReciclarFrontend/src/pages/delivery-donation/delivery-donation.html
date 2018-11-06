@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="blue-dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Seleccionar donación</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="container">
+
+  <div class="register-form">
+
+    <ion-list *ngFor="let item of donationList">
+      <div class="container-list">
+        <div class="check-container">
+          <ion-checkbox checked="false" (ionChange)="toggleMaterials(item.tipoId)"></ion-checkbox>
+        </div>
+        <ion-item style="width: 80%">
+          <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>
+          <br>
+          <b>Cantidad:</b> {{ item.cantidad }}
+          <br>
+          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}
+          <br>
+          <b>Estado:</b> {{ item.estado }}
+          <br> {{ item.descripcion }}
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <button ion-button color="primary" full style="margin-top: 30px" (click)="deliveryMaterial()" type="button" [disabled]="materialsIdSelected.length === 0">
+      Entregar materiales seleccionados
+    </button>
+
+  </div>
+
+</ion-content>

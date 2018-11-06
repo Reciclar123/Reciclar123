@@ -26,11 +26,11 @@
           <b>Estado:</b> {{ item.estado }}
           <br> {{ item.descripcion }}
         </ion-item>
-        <div style="width: 30%; background-color: white">
-          <button ion-button full color="blue-dark" (click)="editMaterial(item)">
+        <div style="width: 30%; height: 125px; background-color: white">
+          <button style="height: 60px;" ion-button full color="blue-dark" (click)="editMaterial(item)">
             Editar
           </button>
-          <button ion-button full style="background-color: red" (click)="deleteMaterial(item.id)">
+          <button style="height: 60px;" ion-button full style="background-color: red" (click)="deleteMaterial(item.id)">
             Eliminar
           </button>
         </div>
@@ -39,7 +39,7 @@
   </div>
 
   <ion-footer class="sticky">
-    <button ion-button color="secondary" full *ngIf="donationList.length > 0"> Entregar donación</button>
+    <button ion-button color="secondary" full *ngIf="donationList.length > 0" (click)="goToDeliveryDonationForm()"> Entregar donación</button>
     <button ion-button full color="blue-dark" (click)="goToDonationForm()">
       <span>Adicionar Material</span>
     </button>

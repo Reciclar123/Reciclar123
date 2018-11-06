@@ -22,6 +22,8 @@ import { DonatePage } from '../pages/donate/donate';
 import { DonationFormPage } from '../pages/donation-form/donation-form';
 import { MaterialProvider } from '../providers/material/material';
 import { SettingsPage } from '../pages/settings/settings';
+import { DeliveryDonationPage } from '../pages/delivery-donation/delivery-donation';
+import { DeliveryQrPage } from '../pages/delivery-qr/delivery-qr';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { SettingsPage } from '../pages/settings/settings';
     ResetPassPage,
     DonatePage,
     DonationFormPage,
-    SettingsPage
+    SettingsPage,
+    DeliveryDonationPage,
+    DeliveryQrPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,9 @@ import { SettingsPage } from '../pages/settings/settings';
     DonationFormPage,
     SettingsPage,
     FieldErrorDisplayComponent,
-    TermsModalComponent
+    TermsModalComponent,
+    DeliveryDonationPage,
+    DeliveryQrPage
   ],
   providers: [
     StatusBar,

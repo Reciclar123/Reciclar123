@@ -4,7 +4,7 @@ import { ENV } from "../../config/environments";
 import { Credentials, ResponseUser } from '../../models/credentials.model';
 import { RegisterData, UserModel, RegisterResponseModel } from '../../models/register-data.model';
 import { Subject } from 'rxjs/Subject';
-import { MaterialTypeModel, MaterialModel } from '../../models/donations.model';
+import { MaterialTypeModel, MaterialModel, DeliveryMaterials, DeliveryMaterialsRp } from '../../models/donations.model';
 import { UserProvider } from '../user/user';
 
 
@@ -82,6 +82,14 @@ export class RequestProvider {
 		const headers = new HttpHeaders({ "Content-Type": "application/json" });
 		return this.http
 			.delete(ENV.API_ENDPOINT + ENV.materialMethod + '/' + materialId + this.ACCESS_TOKEN, {
+				headers
+			});
+	}
+
+	public deliveryMaterials(delMaterials: DeliveryMaterials) {
+		const headers = new HttpHeaders({ "Content-Type": "application/json" });
+		return this.http
+			.post<DeliveryMaterialsRp>(ENV.API_ENDPOINT + ENV.recyclingsMethod + this.ACCESS_TOKEN, delMaterials, {
 				headers
 			});
 	}

@@ -4,6 +4,7 @@ export const ENV = {
     loginMethod: '/Persons/login',
     registerMethod: '/Persons',
     materialTypeMethod: '/TiposMaterial',
-    materialMethod: '/Materials'
+    materialMethod: '/Materials',
+    recyclingsMethod: '/Recyclings'
 
 };
