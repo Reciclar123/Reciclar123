@@ -98,7 +98,7 @@ module.exports = function(Person) {
       next(err);
     }else {
         ctx.req.body.addressP = ctx.req.body.address;
-        
+
         next();
     }
 });
@@ -125,7 +125,8 @@ Person.observe('after save', function(ctx, next) {
                  days : ctx.instance.addressP.days
              },(e,addr)=>{
                      if(!e){
-                        ctx.instance.addressPerson = addr ;
+                        ctx.instance.addressPerson = [] ;
+                        ctx.instance.addressPerson.push({address:addr.address,days:addr.days,id:addr.id});
                      }else {
                          ctx.instance.addressPerson = "error";
                      }
