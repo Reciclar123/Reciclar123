@@ -11,25 +11,25 @@
     <ion-list>
       <ion-item>
         <ion-label>Lista de materiales</ion-label>
-        <ion-select formControlName="materialType" [(ngModel)]="materialData.materialType">
-          <div *ngFor="let mat of materialList">
-              <ion-option value="{{mat.id}}">{{mat.name}}</ion-option>
+        <ion-select formControlName="materialType" [(ngModel)]="materialData.tipoId" interface="action-sheet">
+          <div *ngFor="let mat of materialTypeList">
+              <ion-option value="{{mat.id}}" (ionSelect)="updateUnities(mat)">{{mat.descripcion}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-item>
-      <ion-label floating>Cantidad</ion-label>
-      <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.quantity"></ion-input>
+      <ion-label>Cantidad</ion-label>
+      <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.cantidad"></ion-input>
     </ion-item>
 
     <ion-list>
       <ion-item>
         <ion-label>Unidades</ion-label>
-        <ion-select formControlName="unities" [(ngModel)]="materialData.unities">
+        <ion-select formControlName="unities" [(ngModel)]="materialData.unidadId" interface="action-sheet">
           <div *ngFor="let unit of UnitiesList">
-              <ion-option value="{{unit.id}}">{{unit.name}}</ion-option>
+              <ion-option value="{{unit.id}}">{{unit.descripcion}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
@@ -38,17 +38,17 @@
     <ion-list>
       <ion-item>
         <ion-label>Estado del material</ion-label>
-        <ion-select formControlName="materialState" [(ngModel)]="materialData.materialState">
+        <ion-select formControlName="materialState" [(ngModel)]="materialData.estado" interface="action-sheet">
           <div *ngFor="let state of materialStatesList">
-              <ion-option value="{{state.id}}">{{state.name}}</ion-option>
+              <ion-option value="{{state.name}}">{{state.name}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
     </ion-list>
 
     <ion-item>
-      <ion-label floating>Descripción</ion-label>
-      <ion-textarea class="text-area" formControlName="materialDescription" [(ngModel)]="materialData.materialDescription"></ion-textarea>
+      <ion-label>Descripción</ion-label>
+      <ion-textarea formControlName="materialDescription" [(ngModel)]="materialData.descripcion"></ion-textarea>
     </ion-item>
 
     <button ion-button color="primary" full style="margin-top: 30px" (click)="saveMaterial()" type="button" [disabled]="formGroup.invalid">

@@ -9,6 +9,7 @@ import { UserProvider } from '../providers/user/user';
 import { DonatePage } from '../pages/donate/donate';
 import { UserModel } from '../models/register-data.model';
 import { RequestProvider } from '../providers/request/request';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -75,7 +76,7 @@ export class MyApp {
       // Yo dono
       this.pages = [
         { title: 'Inicio', component: HomePage },
-        { title: 'Ajustes', component: HomePage },
+        { title: 'Ajustes', component: SettingsPage },
         { title: 'Donar', component: DonatePage },
         { title: 'Locales', component: HomePage },
         { title: 'Historico', component: HomePage },
