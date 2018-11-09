@@ -4,9 +4,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidationsProvider } from '../../providers/validations/validations';
 import { TermsModalComponent } from '../../components/terms-modal/terms-modal';
 import { RequestProvider } from '../../providers/request/request';
-import { RegisterData } from '../../models/register-data.model';
+import { RegisterData, addressModel } from '../../models/register-data.model';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
+import { DayTimes } from '../../models/enums/data.enum';
 
 
 @IonicPage()
@@ -36,7 +37,8 @@ export class RegisterPage {
     public validProv: ValidationsProvider,
     public modalCtrl: ModalController,
     private requestProv: RequestProvider,
-    public loadingCtrl: LoadingController, 
+    public loadingCtrl: LoadingController,
+    public request: RequestProvider,
     public userProv: UserProvider) {
 
     const identificationValidators = [
@@ -88,6 +90,15 @@ export class RegisterPage {
     });
     loader.present();
 
+    const userAddress: addressModel = {
+      address: this.registerForm.address,
+      days: [
+        {
+          saturday: DayTimes.todoElDia
+        }
+      ]
+    }
+
     const registerRequest: RegisterData = {
       cedula: this.registerForm.identification,
       ciudad: 'Bogotá',
@@ -98,7 +109,8 @@ export class RegisterPage {
       politicas: this.registerForm.terms,
       rol: this.registerForm.participantType,
       telefono: this.registerForm.phone,
-      username: this.registerForm.phone
+      username: this.registerForm.phone,
+      address: userAddress
     }
 
     this.requestProv.registerUser(registerRequest)
@@ -106,6 +118,8 @@ export class RegisterPage {
         loader.dismiss();
         console.log('registerUser ', data);
         this.userProv.user = data;
+        localStorage.setItem('tokenId', data.tokenId);
+        this.request.generateUserData(data);
         this.navCtrl.setRoot(HomePage);
       }, error => {
         console.log('registerUser error ', error);

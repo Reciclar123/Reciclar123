@@ -27992,6 +27992,50 @@ ion-navbar.toolbar {
   padding: 10px 15px;
 }
 
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.initial-message {
+  margin: 15px auto;
+  width: 90%;
+  text-align: justify;
+}
+
+page-delivery-donation .container-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-delivery-donation .check-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 15px;
+  margin-top: 20px;
+}
+
+page-delivery-qr .qr-message {
+  margin: 10px;
+  font-size: 18px;
+}
+
+page-delivery-qr .qr-container {
+  margin: 20px;
+}
+
 page-donate .empty-message {
   margin: 15px auto;
   width: 80%;
@@ -28019,13 +28063,20 @@ page-donate .list {
 }
 
 page-donation-form .text-area {
-  min-height: 80px;
+  min-height: 60px;
 }
 
-page-home .initial-message {
-  margin: 15px auto;
-  width: 90%;
-  text-align: justify;
+page-donation-form ion-list {
+  margin: 0;
+  padding: 0;
+}
+
+page-donation-form .item-margin-up {
+  margin-top: -30px;
+}
+
+page-donation-form ion-item {
+  height: 65px;
 }
 
 page-home .initial-message p {
@@ -28116,6 +28167,10 @@ page-reset-pass .logo {
 page-reset-pass .container-note {
   margin: 15px auto;
   width: 80%;
+}
+
+page-settings .initial-message p {
+  font-size: 16px;
 }
 
 page-welcome button.btn-registro {

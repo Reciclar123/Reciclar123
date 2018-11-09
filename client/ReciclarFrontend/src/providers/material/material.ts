@@ -1,44 +1,47 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MaterialModel } from '../../models/donations.model';
-import { MATERIALS, MATERIAL_STATES, UNITIES } from "../../models/static-data";
+import { MaterialModel, MaterialTypeModel } from '../../models/donations.model';
+import { MATERIAL_STATES, UNITIES } from "../../models/static-data/static-data";
+import { RequestProvider } from '../request/request';
 
 
 @Injectable()
 export class MaterialProvider {
 
-  private _materials: Array<MaterialModel>;
+  private MATERIAL_TYPE: Array<MaterialTypeModel> = [];
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+    public request: RequestProvider) {
     console.log('Hello MaterialProvider Provider');
+    this.request.getMaterialTypes().subscribe((data) => {
+      this.MATERIAL_TYPE = data;
+    });
   }
 
-  getMaterialsInLocal(): Array<MaterialModel> {
-    const mat = JSON.parse(localStorage.getItem('materials'));
-    console.log('materials', mat)
-    this._materials = mat;
-    if (this._materials === undefined || this._materials === null) {
-      this._materials = [];
-    }
-    return this._materials;
+  getMyMaterials() {
+    return this.request.getMyMaterials();
   }
 
-  setMaterialInLocal(mat: MaterialModel) {
-    this._materials = this.getMaterialsInLocal();
-    this._materials.push(mat);
-    localStorage.setItem('materials', JSON.stringify(this._materials));
+  saveMaterial(material: MaterialModel) {
+    this.request.saveMaterial(material).subscribe((data) => {
+      console.log('saveMaterial', data);
+      //this.setMaterialInLocal(data);
+    });
   }
 
-  setMaterialsInLocal(materials: Array<MaterialModel>) {
-    this._materials = materials;
-    localStorage.setItem('materials', JSON.stringify(materials));
+  updateMaterial(material: MaterialModel) {
+    this.request.updateMaterial(material).subscribe((data) => {
+      console.log('updateMaterial', data);
+      //this.setMaterialInLocal(data);
+    });
   }
 
   getMaterialValuebyId(id: string) {
     let material = '';
-    MATERIALS.map( mat => {
-      if(mat.id === id) material = mat.name;
+    this.MATERIAL_TYPE.map(mat => {
+      if (mat.id === id) material = mat.descripcion;
     });
+
     return material;
   }
 
@@ -50,10 +53,16 @@ export class MaterialProvider {
     return stateName;
   }
 
-  getUnitiesValuebyId(id: string) {
+  getUnitiesValuebyId(idMat: string, idUnity: string) {
     let unityName = '';
-    UNITIES.map(unity => {
-      if(unity.id === id) unityName = unity.name;
+    this.MATERIAL_TYPE.map(mat => {
+      if (mat.id === idMat) {
+        mat.unidades.map(unity => {
+          if (unity.id == idUnity) {
+            unityName = unity.descripcion;
+          }
+        });
+      }
     });
     return unityName;
   }
