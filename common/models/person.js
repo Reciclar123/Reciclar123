@@ -112,7 +112,7 @@ Person.observe('after save', function(ctx, next) {
 
          if (loginToken) {
 
-            ctx.instance.personId = loginToken.personId;
+            ctx.instance.personId = loginToken.userId;
             ctx.instance.ttl = loginToken.ttl;
             ctx.instance.tokenId = loginToken.id;
 
@@ -126,7 +126,7 @@ Person.observe('after save', function(ctx, next) {
              },(e,addr)=>{
                      if(!e){
                         ctx.instance.addressPerson = [] ;
-                        ctx.instance.addressPerson.push({address:addr.address,days:addr.days,id:addr.id});
+                        ctx.instance.addressPerson.push({personId:addr.personId,address:addr.address,days:addr.days,id:addr.id});
                      }else {
                          ctx.instance.addressPerson = "error";
                      }
