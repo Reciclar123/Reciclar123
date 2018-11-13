@@ -10,17 +10,22 @@ export class UserProvider {
 	private _user: UserModel;
 
 	get user(): UserModel {
-		if (this._user) return this._user;
-		else {
-			const tempo = JSON.parse(localStorage.getItem('user'));
-			this._user = tempo;
-			return tempo;
+		if (this._user) {
+			return this._user;
+		} else {
+			const tempUsr = JSON.parse(localStorage.getItem('user'));
+			this._user = tempUsr;
+			return tempUsr;
 		}
 	}
 
 	set user(us: UserModel) {
+		if(us.addressPerson) {
+			us.address = us.addressPerson;
+		}
 		localStorage.setItem('user', JSON.stringify(us));
-		this._user = us;
+		const tempUsr = JSON.parse(localStorage.getItem('user'));
+		this._user = tempUsr;
 	}
 
 	isLogin() {

@@ -31,11 +31,15 @@ export class DeliveryDonationPage {
 
     this.materialProv.getMyMaterials().subscribe((data) => {
       this.donationList = data;
-      console.log(data)
+      console.log('donationList',data);
+    }, error => {
+      console.log(error);
     });
   }
 
   toggleMaterials(materialId: string) {
+    console.log('materialsIdSelected ', this.materialsIdSelected);
+    console.log('materialId ', materialId);
     const index = this.materialsIdSelected.indexOf(materialId);
     console.log('index', index);
     if (index === -1) {

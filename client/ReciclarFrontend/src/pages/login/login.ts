@@ -5,8 +5,7 @@ import { ResetPassPage } from '../reset-pass/reset-pass';
 import { RequestProvider } from '../../providers/request/request';
 import { HomePage } from '../home/home';
 import { ValidationsProvider } from '../../providers/validations/validations';
-import { Credentials, ResponseUser } from '../../models/credentials.model';
-import { UserModel } from '../../models/register-data.model';
+import { Credentials } from '../../models/credentials.model';
 import { UserProvider } from '../../providers/user/user';
 
 
@@ -18,7 +17,7 @@ import { UserProvider } from '../../providers/user/user';
 export class LoginPage {
 
   private formSubmitAttempt: boolean;
-  private userError: boolean = false;
+  userError: boolean = false;
   formGroup: FormGroup;
   isValidFormSubmitted = null;
 

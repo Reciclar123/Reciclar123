@@ -41,10 +41,14 @@ var DeliveryDonationPage = /** @class */ (function () {
         console.log('initial materialsIdSelected', this.materialsIdSelected);
         this.materialProv.getMyMaterials().subscribe(function (data) {
             _this.donationList = data;
-            console.log(data);
+            console.log('donationList', data);
+        }, function (error) {
+            console.log(error);
         });
     }
     DeliveryDonationPage.prototype.toggleMaterials = function (materialId) {
+        console.log('materialsIdSelected ', this.materialsIdSelected);
+        console.log('materialId ', materialId);
         var index = this.materialsIdSelected.indexOf(materialId);
         console.log('index', index);
         if (index === -1) {
@@ -69,7 +73,7 @@ var DeliveryDonationPage = /** @class */ (function () {
     };
     DeliveryDonationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-delivery-donation',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/delivery-donation/delivery-donation.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Seleccionar donación</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="register-form">\n\n    <ion-list *ngFor="let item of donationList">\n      <div class="container-list">\n        <div class="check-container">\n          <ion-checkbox checked="false" (ionChange)="toggleMaterials(item.tipoId)"></ion-checkbox>\n        </div>\n        <ion-item style="width: 80%">\n          <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>\n          <br>\n          <b>Cantidad:</b> {{ item.cantidad }}\n          <br>\n          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}\n          <br>\n          <b>Estado:</b> {{ item.estado }}\n          <br> {{ item.descripcion }}\n        </ion-item>\n      </div>\n    </ion-list>\n\n    <button ion-button color="primary" full style="margin-top: 30px" (click)="deliveryMaterial()" type="button" [disabled]="materialsIdSelected.length === 0">\n      Entregar materiales seleccionados\n    </button>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/delivery-donation/delivery-donation.html"*/,
+            selector: 'page-delivery-donation',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/delivery-donation/delivery-donation.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Seleccionar donación</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="register-form">\n\n    <ion-list *ngFor="let item of donationList">\n      <div class="container-list">\n        <div class="check-container">\n          <ion-checkbox checked="false" (ionChange)="toggleMaterials(item.id)"></ion-checkbox>\n        </div>\n        <ion-item style="width: 80%">\n          <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>\n          <br>\n          <b>Cantidad:</b> {{ item.cantidad }}\n          <br>\n          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}\n          <br>\n          <b>Estado:</b> {{ item.estado }}\n          <br> {{ item.descripcion }}\n        </ion-item>\n      </div>\n    </ion-list>\n\n    <button ion-button color="primary" full style="margin-top: 30px" (click)="deliveryMaterial()" type="button" [disabled]="materialsIdSelected.length === 0">\n      Entregar materiales seleccionados\n    </button>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/delivery-donation/delivery-donation.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -91,7 +95,7 @@ var DeliveryDonationPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DeliveryQrPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_qrcode__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_qrcode__ = __webpack_require__(274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_qrcode___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_qrcode__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -128,10 +132,9 @@ var DeliveryQrPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-delivery-qr',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/delivery-qr/delivery-qr.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Entregar Donación</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <ion-card>\n    <div class="qr-message">\n      "Yo recojo" escanea su código QR y obtiene la información sobre lo que usted le esta entregando y así le entrega sus puntos,\n      de acuerdo a lo entregado.\n    </div>\n\n    <div class="qr-container">\n      <img [src]="urlQR" alt="QRCode" align="center" />\n    </div>\n  </ion-card>\n\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/delivery-qr/delivery-qr.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], DeliveryQrPage);
     return DeliveryQrPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=delivery-qr.js.map
@@ -147,7 +150,7 @@ var DeliveryQrPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_material_material__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_static_data_static_data__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_static_data_static_data__ = __webpack_require__(295);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__donate_donate__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_request_request__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user__ = __webpack_require__(27);
@@ -176,6 +179,7 @@ var DonationFormPage = /** @class */ (function () {
         this.materialProv = materialProv;
         this.request = request;
         this.userProv = userProv;
+        this.formSubmitAttempt = false;
         this.isValidFormSubmitted = null;
         this.updateMaterial = false;
         this.materialTypeList = [];
@@ -234,7 +238,7 @@ var DonationFormPage = /** @class */ (function () {
     };
     DonationFormPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-donation-form',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donation-form/donation-form.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Registro de Materiales</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <form [formGroup]="formGroup" novalidate class="register-form">\n\n    <ion-list>\n      <ion-item>\n        <ion-label>Lista de materiales</ion-label>\n        <ion-select formControlName="materialType" [(ngModel)]="materialData.tipoId" interface="action-sheet">\n          <div *ngFor="let mat of materialTypeList">\n              <ion-option value="{{mat.id}}" (ionSelect)="updateUnities(mat)">{{mat.descripcion}}</ion-option>\n          </div>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n\n    <ion-item>\n      <ion-label>Cantidad</ion-label>\n      <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.cantidad"></ion-input>\n    </ion-item>\n\n    <ion-list>\n      <ion-item>\n        <ion-label>Unidades</ion-label>\n        <ion-select formControlName="unities" [(ngModel)]="materialData.unidadId" interface="action-sheet">\n          <div *ngFor="let unit of UnitiesList">\n              <ion-option value="{{unit.id}}">{{unit.descripcion}}</ion-option>\n          </div>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n\n    <ion-list>\n      <ion-item>\n        <ion-label>Estado del material</ion-label>\n        <ion-select formControlName="materialState" [(ngModel)]="materialData.estado" interface="action-sheet">\n          <div *ngFor="let state of materialStatesList">\n              <ion-option value="{{state.name}}">{{state.name}}</ion-option>\n          </div>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n\n    <ion-item>\n      <ion-label>Descripción</ion-label>\n      <ion-textarea formControlName="materialDescription" [(ngModel)]="materialData.descripcion"></ion-textarea>\n    </ion-item>\n\n    <button ion-button color="primary" full style="margin-top: 30px" (click)="saveMaterial()" type="button" [disabled]="formGroup.invalid">\n      Guardar \n    </button>\n\n  </form>\n\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donation-form/donation-form.html"*/,
+            selector: 'page-donation-form',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donation-form/donation-form.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <ion-title>Registro de Materiales</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <form [formGroup]="formGroup" novalidate class="register-form">\n\n    <ion-list>\n      <ion-item>\n        <ion-label>Lista de materiales</ion-label>\n        <ion-select formControlName="materialType" [(ngModel)]="materialData.tipoId" interface="action-sheet">\n          <div *ngFor="let mat of materialTypeList">\n              <ion-option value="{{mat.tipoId}}" (ionSelect)="updateUnities(mat)">{{mat.descripcion}}</ion-option>\n          </div>\n        </ion-select>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Cantidad</ion-label>\n        <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.cantidad"></ion-input>\n      </ion-item>\n    \n      <ion-item>\n        <ion-label>Unidades</ion-label>\n        <ion-select formControlName="unities" [(ngModel)]="materialData.unidadId" interface="action-sheet">\n          <div *ngFor="let unit of UnitiesList">\n              <ion-option value="{{unit.id}}">{{unit.descripcion}}</ion-option>\n          </div>\n        </ion-select>\n      </ion-item>\n      \n      <ion-item>\n        <ion-label>Estado del material</ion-label>\n        <ion-select formControlName="materialState" [(ngModel)]="materialData.estado" interface="action-sheet">\n          <div *ngFor="let state of materialStatesList">\n              <ion-option value="{{state.name}}">{{state.name}}</ion-option>\n          </div>\n        </ion-select>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Descripción</ion-label>\n        <ion-textarea formControlName="materialDescription" [(ngModel)]="materialData.descripcion"></ion-textarea>\n      </ion-item>\n\n  </ion-list>\n  \n  <ion-footer>\n    <button ion-button color="primary" full style="margin-top: 30px" (click)="saveMaterial()" type="button" [disabled]="formGroup.invalid">\n      Guardar \n    </button>\n  </ion-footer>  \n\n    \n\n  </form>\n\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donation-form/donation-form.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -732,11 +736,11 @@ var map = {
 		3
 	],
 	"../pages/reset-pass/reset-pass.module": [
-		330,
+		329,
 		2
 	],
 	"../pages/settings/settings.module": [
-		329,
+		330,
 		1
 	],
 	"../pages/welcome/welcome.module": [
@@ -760,64 +764,6 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 174:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export MATERIALS */
-/* unused harmony export UNITIES */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MATERIAL_STATES; });
-var MATERIALS = [
-    { id: '01', name: 'Mixto (Si no quieres ponerte a separarlos y diferenciar que tienes)' },
-    { id: '02', name: 'Papel: Periódico/Cartón /Plegadiza/Archivo/Envasesy tetrapack/Cuadernos y libretas' },
-    { id: '03', name: 'Periódico' },
-    { id: '04', name: 'Cartón' },
-    { id: '05', name: 'Plegadiza' },
-    { id: '06', name: 'Archivo' },
-    { id: '07', name: 'Envases y Tetrapack' },
-    { id: '08', name: 'Cuadernos y libretas' },
-    { id: '09', name: 'Vidrió: Botellas/ Frascos' },
-    { id: '10', name: 'Botellas o frascos de vidrio transparente' },
-    { id: '11', name: 'Botellas o frascos de vidrio café' },
-    { id: '12', name: 'Botellas o frascos de vidrio verde' },
-    { id: '13', name: 'Botellas o frascos de vidrio azul' },
-    { id: '14', name: 'Otros de vidrio' },
-    { id: '15', name: 'Metál: Latas/Chatarra/Viruta' },
-    { id: '16', name: 'Latas de enlatados' },
-    { id: '17', name: 'Latas de bebidas' },
-    { id: '18', name: 'Chatarra' },
-    { id: '19', name: 'Viruta de metal' },
-    { id: '20', name: 'Otros elementos de metal' },
-    { id: '21', name: 'Plástico: Botellas/Empaques/Tapas/bolsas' },
-    { id: '22', name: 'Botellas y frascos de plastico (Tucos)' },
-    { id: '23', name: 'Empaques plasticos' },
-    { id: '24', name: 'Tapas plasticas' },
-    { id: '25', name: 'Bolsas' },
-    { id: '26', name: 'Otros elementos plásticos' },
-    { id: '27', name: 'Telas' },
-    { id: '28', name: 'Equipos electrónicos' },
-    { id: '29', name: 'cartuchos de tinta y tóner' }
-];
-var UNITIES = [
-    { id: '01', name: 'kg  estimados' },
-    { id: '02', name: 'm3 estimados' },
-    { id: '03', name: 'Caja pequeña (hasta 25cm de alto)' },
-    { id: '04', name: 'Caja mediana (hasta de 50 cm de alto)' },
-    { id: '05', name: 'Caja grande (de más de 50 cm de alto)' },
-    { id: '06', name: 'Bolsa pequeña (hasta 25cm de alto)' },
-    { id: '07', name: 'Bolsa mediana (hasta de 50 cm de alto)' },
-    { id: '08', name: 'Bolsa grande (de más de 50 cm de alto)' }
-];
-var MATERIAL_STATES = [
-    { id: '01', name: 'limpio/húmedo' },
-    { id: '02', name: 'limpio/seco' },
-    { id: '03', name: 'Sucio/húmedo' },
-    { id: '04', name: 'Sucio/seco' }
-];
-//# sourceMappingURL=static-data.js.map
-
-/***/ }),
-
 /***/ 21:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -825,7 +771,7 @@ var MATERIAL_STATES = [
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_environments__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_environments__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_user__ = __webpack_require__(27);
@@ -850,8 +796,8 @@ var RequestProvider = /** @class */ (function () {
         // Se crea un subject para instanciar un observable
         this.subjUser = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Subject__["Subject"]();
         this.$obsUser = this.subjUser.asObservable();
-        console.log('Hello RequestProvider Provider');
         this._user = this.userProv.user;
+        console.log('this._user', this._user);
         this.ACCESS_TOKEN = '?access_token=' + localStorage.getItem('tokenId');
     }
     // metodo para disparar el observable de config
@@ -880,7 +826,8 @@ var RequestProvider = /** @class */ (function () {
         });
     };
     RequestProvider.prototype.getMyMaterials = function () {
-        var userId = this._user.address[0].personId;
+        console.log(this._user);
+        var userId = this._user.personId;
         var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({ "Content-Type": "application/json" });
         return this.http
             .get(__WEBPACK_IMPORTED_MODULE_2__config_environments__["a" /* ENV */].API_ENDPOINT + '/Persons/' + userId + '/materiales' + this.ACCESS_TOKEN, {
@@ -927,7 +874,7 @@ var RequestProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 222:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -966,13 +913,13 @@ var FieldErrorDisplayComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 223:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(243);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -980,7 +927,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 244:
+/***/ 243:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -991,14 +938,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(314);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_welcome_welcome__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_register_register__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_forms__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_validations_validations__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_components_module__ = __webpack_require__(322);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_field_error_display_field_error_display__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_field_error_display_field_error_display__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_terms_modal_terms_modal__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_login_login__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_reset_pass_reset_pass__ = __webpack_require__(116);
@@ -1069,8 +1016,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/donation-form/donation-form.module#DonationFormPageModule', name: 'DonationFormPage', segment: 'donation-form', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reset-pass/reset-pass.module#ResetPassPageModule', name: 'ResetPassPage', segment: 'reset-pass', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -1135,17 +1082,22 @@ var UserProvider = /** @class */ (function () {
     }
     Object.defineProperty(UserProvider.prototype, "user", {
         get: function () {
-            if (this._user)
+            if (this._user) {
                 return this._user;
+            }
             else {
-                var tempo = JSON.parse(localStorage.getItem('user'));
-                this._user = tempo;
-                return tempo;
+                var tempUsr = JSON.parse(localStorage.getItem('user'));
+                this._user = tempUsr;
+                return tempUsr;
             }
         },
         set: function (us) {
+            if (us.addressPerson) {
+                us.address = us.addressPerson;
+            }
             localStorage.setItem('user', JSON.stringify(us));
-            this._user = us;
+            var tempUsr = JSON.parse(localStorage.getItem('user'));
+            this._user = tempUsr;
         },
         enumerable: true,
         configurable: true
@@ -1164,7 +1116,7 @@ var UserProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 274:
+/***/ 273:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1178,6 +1130,64 @@ var ENV = {
     recyclingsMethod: '/Recyclings'
 };
 //# sourceMappingURL=environments.js.map
+
+/***/ }),
+
+/***/ 295:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export MATERIALS */
+/* unused harmony export UNITIES */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MATERIAL_STATES; });
+var MATERIALS = [
+    { id: '01', name: 'Mixto (Si no quieres ponerte a separarlos y diferenciar que tienes)' },
+    { id: '02', name: 'Papel: Periódico/Cartón /Plegadiza/Archivo/Envasesy tetrapack/Cuadernos y libretas' },
+    { id: '03', name: 'Periódico' },
+    { id: '04', name: 'Cartón' },
+    { id: '05', name: 'Plegadiza' },
+    { id: '06', name: 'Archivo' },
+    { id: '07', name: 'Envases y Tetrapack' },
+    { id: '08', name: 'Cuadernos y libretas' },
+    { id: '09', name: 'Vidrió: Botellas/ Frascos' },
+    { id: '10', name: 'Botellas o frascos de vidrio transparente' },
+    { id: '11', name: 'Botellas o frascos de vidrio café' },
+    { id: '12', name: 'Botellas o frascos de vidrio verde' },
+    { id: '13', name: 'Botellas o frascos de vidrio azul' },
+    { id: '14', name: 'Otros de vidrio' },
+    { id: '15', name: 'Metál: Latas/Chatarra/Viruta' },
+    { id: '16', name: 'Latas de enlatados' },
+    { id: '17', name: 'Latas de bebidas' },
+    { id: '18', name: 'Chatarra' },
+    { id: '19', name: 'Viruta de metal' },
+    { id: '20', name: 'Otros elementos de metal' },
+    { id: '21', name: 'Plástico: Botellas/Empaques/Tapas/bolsas' },
+    { id: '22', name: 'Botellas y frascos de plastico (Tucos)' },
+    { id: '23', name: 'Empaques plasticos' },
+    { id: '24', name: 'Tapas plasticas' },
+    { id: '25', name: 'Bolsas' },
+    { id: '26', name: 'Otros elementos plásticos' },
+    { id: '27', name: 'Telas' },
+    { id: '28', name: 'Equipos electrónicos' },
+    { id: '29', name: 'cartuchos de tinta y tóner' }
+];
+var UNITIES = [
+    { id: '01', name: 'kg  estimados' },
+    { id: '02', name: 'm3 estimados' },
+    { id: '03', name: 'Caja pequeña (hasta 25cm de alto)' },
+    { id: '04', name: 'Caja mediana (hasta de 50 cm de alto)' },
+    { id: '05', name: 'Caja grande (de más de 50 cm de alto)' },
+    { id: '06', name: 'Bolsa pequeña (hasta 25cm de alto)' },
+    { id: '07', name: 'Bolsa mediana (hasta de 50 cm de alto)' },
+    { id: '08', name: 'Bolsa grande (de más de 50 cm de alto)' }
+];
+var MATERIAL_STATES = [
+    { id: '01', name: 'limpio/húmedo' },
+    { id: '02', name: 'limpio/seco' },
+    { id: '03', name: 'Sucio/húmedo' },
+    { id: '04', name: 'Sucio/seco' }
+];
+//# sourceMappingURL=static-data.js.map
 
 /***/ }),
 
@@ -1210,8 +1220,8 @@ var DonationStatus;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_welcome_welcome__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_user__ = __webpack_require__(27);
@@ -1329,7 +1339,7 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__field_error_display_field_error_display__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__field_error_display_field_error_display__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__terms_modal_terms_modal__ = __webpack_require__(89);
@@ -1377,8 +1387,7 @@ var ComponentsModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_static_data_static_data__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__request_request__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__request_request__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1391,7 +1400,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MaterialProvider = /** @class */ (function () {
     function MaterialProvider(http, request) {
         var _this = this;
@@ -1400,7 +1408,11 @@ var MaterialProvider = /** @class */ (function () {
         this.MATERIAL_TYPE = [];
         console.log('Hello MaterialProvider Provider');
         this.request.getMaterialTypes().subscribe(function (data) {
+            // TODO: validar el servicio, el id que trae es el de la persona y no el del material
+            console;
             _this.MATERIAL_TYPE = data;
+        }, function (error) {
+            console.log(error);
         });
     }
     MaterialProvider.prototype.getMyMaterials = function () {
@@ -1426,13 +1438,13 @@ var MaterialProvider = /** @class */ (function () {
         });
         return material;
     };
-    MaterialProvider.prototype.getMaterialStatesValuebyId = function (id) {
-        var stateName = '';
-        __WEBPACK_IMPORTED_MODULE_2__models_static_data_static_data__["a" /* MATERIAL_STATES */].map(function (state) {
-            if (state.id === id)
-                stateName = state.name;
+    MaterialProvider.prototype.getMaterialValuebyTipoId = function (tipoId) {
+        var material = '';
+        this.MATERIAL_TYPE.map(function (mat) {
+            if (mat.tipoId === tipoId)
+                material = mat.descripcion;
         });
-        return stateName;
+        return material;
     };
     MaterialProvider.prototype.getUnitiesValuebyId = function (idMat, idUnity) {
         var unityName = '';
@@ -1450,7 +1462,7 @@ var MaterialProvider = /** @class */ (function () {
     MaterialProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_3__request_request__["a" /* RequestProvider */]])
+            __WEBPACK_IMPORTED_MODULE_2__request_request__["a" /* RequestProvider */]])
     ], MaterialProvider);
     return MaterialProvider;
 }());
@@ -1557,7 +1569,9 @@ var DonatePage = /** @class */ (function () {
         this.donationList = [];
         this.materialProv.getMyMaterials().subscribe(function (data) {
             _this.donationList = data;
-            console.log(data);
+            console.log('donationList', data);
+        }, function (error) {
+            console.log(error);
         });
     }
     DonatePage_1 = DonatePage;
@@ -1580,7 +1594,7 @@ var DonatePage = /** @class */ (function () {
     };
     DonatePage = DonatePage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-donate',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Donar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="empty-message" *ngIf="donationList.length === 0">\n    <span>Aún no tienes registradas donaciones</span>\n  </div>\n\n  <div *ngIf="donationList.length > 0">\n    <ion-list *ngFor="let item of donationList">\n      <div class="container-list">\n        <ion-item style="width: 70%">\n          <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>\n          <br>\n          <b>Cantidad:</b> {{ item.cantidad }}\n          <br>\n          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}\n          <br>\n          <b>Estado:</b> {{ item.estado }}\n          <br> {{ item.descripcion }}\n        </ion-item>\n        <div style="width: 30%; height: 125px; background-color: white">\n          <button style="height: 60px;" ion-button full color="blue-dark" (click)="editMaterial(item)">\n            Editar\n          </button>\n          <button style="height: 60px;" ion-button full style="background-color: red" (click)="deleteMaterial(item.id)">\n            Eliminar\n          </button>\n        </div>\n      </div>\n    </ion-list>\n  </div>\n\n  <ion-footer class="sticky">\n    <button ion-button color="secondary" full *ngIf="donationList.length > 0" (click)="goToDeliveryDonationForm()"> Entregar donación</button>\n    <button ion-button full color="blue-dark" (click)="goToDonationForm()">\n      <span>Adicionar Material</span>\n    </button>\n  </ion-footer>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/,
+            selector: 'page-donate',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Donar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="container">\n\n  <div class="empty-message" *ngIf="donationList.length === 0">\n    <span>Aún no tienes registradas donaciones</span>\n  </div>\n\n  <div *ngIf="donationList.length > 0">\n    <ion-list *ngFor="let item of donationList">\n      <div class="container-list">\n        <ion-item style="width: 70%">\n          <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>\n          <br>\n          <b>Cantidad:</b> {{ item.cantidad }}\n          <br>\n          <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}\n          <br>\n          <b>Estado:</b> {{ item.estado }}\n          <br> {{ item.descripcion }}\n        </ion-item>\n        <div style="width: 30%; height: 125px; background-color: white">\n          <button style="height: 60px;" ion-button full color="blue-dark" (click)="editMaterial(item)">\n            Editar\n          </button>\n          <button style="height: 60px;" ion-button full style="background-color: red" (click)="deleteMaterial(item.id)">\n            Eliminar\n          </button>\n        </div>\n      </div>\n    </ion-list>\n  </div>\n\n  <ion-footer>\n    <button ion-button color="secondary" full *ngIf="donationList.length > 0" (click)="goToDeliveryDonationForm()"> Entregar donación</button>\n    <button ion-button full color="blue-dark" (click)="goToDonationForm()">\n      <span>Adicionar Material</span>\n    </button>\n  </ion-footer>\n\n</ion-content>'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donate/donate.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -1668,5 +1682,5 @@ var TermsModalComponent = /** @class */ (function () {
 
 /***/ })
 
-},[223]);
+},[222]);
 //# sourceMappingURL=main.js.map

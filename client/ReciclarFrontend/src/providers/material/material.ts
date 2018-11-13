@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MaterialModel, MaterialTypeModel } from '../../models/donations.model';
-import { MATERIAL_STATES, UNITIES } from "../../models/static-data/static-data";
+import { MATERIAL_STATES } from "../../models/static-data/static-data";
 import { RequestProvider } from '../request/request';
 
 
@@ -14,7 +14,11 @@ export class MaterialProvider {
     public request: RequestProvider) {
     console.log('Hello MaterialProvider Provider');
     this.request.getMaterialTypes().subscribe((data) => {
+      // TODO: validar el servicio, el id que trae es el de la persona y no el del material
+      console
       this.MATERIAL_TYPE = data;
+    }, error => {
+      console.log(error);
     });
   }
 
@@ -41,16 +45,15 @@ export class MaterialProvider {
     this.MATERIAL_TYPE.map(mat => {
       if (mat.id === id) material = mat.descripcion;
     });
-
     return material;
   }
 
-  getMaterialStatesValuebyId(id: string) {
-    let stateName = '';
-    MATERIAL_STATES.map(state => {
-      if (state.id === id) stateName = state.name;
+  getMaterialValuebyTipoId(tipoId: string) {
+    let material = '';
+    this.MATERIAL_TYPE.map(mat => {
+      if (mat.tipoId === tipoId) material = mat.descripcion;
     });
-    return stateName;
+    return material;
   }
 
   getUnitiesValuebyId(idMat: string, idUnity: string) {

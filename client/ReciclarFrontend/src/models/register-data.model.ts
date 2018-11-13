@@ -23,7 +23,7 @@ export interface UserModel {
     politicas: boolean;
     username: string;
     fecha?: string;
-    userId: string;
+    personId: string;
     address?: [addressModel];
 }
 
@@ -56,7 +56,7 @@ export interface RegisterResponseModel {
     politicas: boolean;
     username: string;
     fecha?: string;
-    userId: string;
+    personId: string;
     tokenId: string;
     address?: [addressModel];
 }

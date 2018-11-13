@@ -19,12 +19,11 @@ export class DonationFormPage {
 
   user: UserModel;
 
-  private formSubmitAttempt: boolean;
+  formSubmitAttempt: boolean = false;
   formGroup: FormGroup;
   isValidFormSubmitted = null;
 
-  private updateMaterial: boolean = false;
-
+  updateMaterial: boolean = false;
 
   materialTypeList: Array<MaterialTypeModel> = [];
   UnitiesList: Array<UnitiesModel> = [];
@@ -93,7 +92,6 @@ export class DonationFormPage {
       this.materialProv.saveMaterial(this.materialData);
     } else {
       this.materialProv.updateMaterial(this.materialData);
-
     }
 
     this.navCtrl.setRoot(DonatePage);
