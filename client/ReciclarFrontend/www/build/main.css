@@ -28079,6 +28079,10 @@ page-donation-form ion-item {
   height: 65px;
 }
 
+page-donations-published ion-item {
+  word-wrap: break-word;
+}
+
 page-home .initial-message p {
   font-size: 16px;
 }

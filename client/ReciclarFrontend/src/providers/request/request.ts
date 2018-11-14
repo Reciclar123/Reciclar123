@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ENV } from "../../config/environments";
 import { Credentials } from '../../models/credentials.model';
-import { RegisterData, UserModel, RegisterResponseModel } from '../../models/register-data.model';
+import { RegisterData, UserModel, RegisterResponseModel, addressModel } from '../../models/register-data.model';
 import { Subject } from 'rxjs/Subject';
-import { MaterialTypeModel, MaterialModel, DeliveryMaterials, DeliveryMaterialsRp } from '../../models/donations.model';
+import { MaterialTypeModel, MaterialModel, DeliveryMaterials, DeliveryMaterialsRp, AllMaterialList } from '../../models/donations.model';
 import { UserProvider } from '../user/user';
 
 
@@ -91,6 +91,22 @@ export class RequestProvider {
 		const headers = new HttpHeaders({ "Content-Type": "application/json" });
 		return this.http
 			.post<DeliveryMaterialsRp>(ENV.API_ENDPOINT + ENV.recyclingsMethod + this.ACCESS_TOKEN, delMaterials, {
+				headers
+			});
+	}
+
+	public getAllMaterials() {
+		const headers = new HttpHeaders({ "Content-Type": "application/json" });
+		return this.http
+			.get<Array<AllMaterialList>>(ENV.API_ENDPOINT + ENV.materialMethod + '?filter[where][status]=publicado', {
+				headers
+			});
+	}
+
+	public getAddressByPersonId(personId: string) {
+		const headers = new HttpHeaders({ "Content-Type": "application/json" });
+		return this.http
+			.get<Array<addressModel>>(ENV.API_ENDPOINT + ENV.registerMethod + '/' +personId + '/address', {
 				headers
 			});
 	}

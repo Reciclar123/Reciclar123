@@ -10,6 +10,7 @@ import { DonatePage } from '../pages/donate/donate';
 import { UserModel } from '../models/register-data.model';
 import { RequestProvider } from '../providers/request/request';
 import { SettingsPage } from '../pages/settings/settings';
+import { DonationsPublishedPage } from '../pages/donations-published/donations-published';
 
 @Component({
   templateUrl: 'app.html'
@@ -85,7 +86,7 @@ export class MyApp {
       // Yo recojo
       this.pages = [
         { title: 'Inicio', component: HomePage },
-        { title: 'Donaciones Publicadas', component: HomePage },
+        { title: 'Donaciones Publicadas', component: DonationsPublishedPage },
         { title: 'Tu lista de Donaciones', component: HomePage },
         { title: 'Recoger', component: HomePage },
         { title: 'Historico', component: HomePage },

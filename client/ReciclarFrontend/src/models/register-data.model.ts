@@ -24,7 +24,9 @@ export interface UserModel {
     username: string;
     fecha?: string;
     personId: string;
-    address?: [addressModel];
+    address?: Array<addressModel>;
+    addressPerson?: Array<addressModel>;
+
 }
 
 export interface daysModel {
@@ -58,5 +60,6 @@ export interface RegisterResponseModel {
     fecha?: string;
     personId: string;
     tokenId: string;
-    address?: [addressModel];
+    address?: Array<addressModel>;
+    addressPerson?: Array<addressModel>;
 }

@@ -70,4 +70,8 @@ export class MaterialProvider {
     return unityName;
   }
 
+  getAllMaterials() {
+    return this.request.getAllMaterials();
+  }
+
 }
