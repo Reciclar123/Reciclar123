@@ -257,6 +257,69 @@ var DonationFormPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DonationsPublishedPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_material_material__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_request_request__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__donations_published_details_donations_published_details__ = __webpack_require__(116);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var DonationsPublishedPage = /** @class */ (function () {
+    function DonationsPublishedPage(navCtrl, navParams, materialProv, userProv, request) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.materialProv = materialProv;
+        this.userProv = userProv;
+        this.request = request;
+        this.allMaterialsList = [];
+        this._user = this.userProv.user;
+        this.materialProv.getAllMaterials().subscribe(function (data) {
+            _this.allMaterialsList = data;
+            console.log('allMaterialsList', data);
+        }, function (error) {
+            console.log(error);
+        });
+    }
+    DonationsPublishedPage.prototype.goToDetails = function (material) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__donations_published_details_donations_published_details__["a" /* DonationsPublishedDetailsPage */], { material: material });
+    };
+    DonationsPublishedPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-donations-published',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donations-published/donations-published.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Donaciones publicadas</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="container">\n\n    <ion-list>\n        <div *ngFor="let item of allMaterialsList">\n          <ion-item text-wrap (click)="goToDetails(item)">\n            <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>\n            <br>\n            <b>Cantidad:</b> {{ item.cantidad }}\n            <br>\n            <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}\n            <br>\n            <b>Estado:</b> {{ item.estado }} <br>\n            {{ item.descripcion }}\n          </ion-item>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donations-published/donations-published.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_material_material__["a" /* MaterialProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_request_request__["a" /* RequestProvider */]])
+    ], DonationsPublishedPage);
+    return DonationsPublishedPage;
+}());
+
+//# sourceMappingURL=donations-published.js.map
+
+/***/ }),
+
+/***/ 116:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DonationsPublishedDetailsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
@@ -307,69 +370,6 @@ var DonationsPublishedDetailsPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=donations-published-details.js.map
-
-/***/ }),
-
-/***/ 116:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DonationsPublishedPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_material_material__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_user__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_request_request__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__donations_published_details_donations_published_details__ = __webpack_require__(115);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var DonationsPublishedPage = /** @class */ (function () {
-    function DonationsPublishedPage(navCtrl, navParams, materialProv, userProv, request) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.materialProv = materialProv;
-        this.userProv = userProv;
-        this.request = request;
-        this.allMaterialsList = [];
-        this._user = this.userProv.user;
-        this.materialProv.getAllMaterials().subscribe(function (data) {
-            _this.allMaterialsList = data;
-            console.log('allMaterialsList', data);
-        }, function (error) {
-            console.log(error);
-        });
-    }
-    DonationsPublishedPage.prototype.goToDetails = function (material) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__donations_published_details_donations_published_details__["a" /* DonationsPublishedDetailsPage */], { material: material });
-    };
-    DonationsPublishedPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-donations-published',template:/*ion-inline-start:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donations-published/donations-published.html"*/'<ion-header>\n  <ion-navbar color="blue-dark">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Donaciones publicadas</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="container">\n\n    <ion-list>\n        <div *ngFor="let item of allMaterialsList">\n          <ion-item text-wrap (click)="goToDetails(item)">\n            <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>\n            <br>\n            <b>Cantidad:</b> {{ item.cantidad }}\n            <br>\n            <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}\n            <br>\n            <b>Estado:</b> {{ item.estado }} <br>\n            {{ item.descripcion }}\n          </ion-item>\n        </div>\n    </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/Users/alope24/Documents/projects/fedesoft/proyectoJoha/Reciclar123/client/ReciclarFrontend/src/pages/donations-published/donations-published.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_material_material__["a" /* MaterialProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_request_request__["a" /* RequestProvider */]])
-    ], DonationsPublishedPage);
-    return DonationsPublishedPage;
-}());
-
-//# sourceMappingURL=donations-published.js.map
 
 /***/ }),
 
@@ -964,19 +964,19 @@ var map = {
 		9
 	],
 	"../pages/donate/donate.module": [
-		327,
+		328,
 		8
 	],
 	"../pages/donation-form/donation-form.module": [
-		328,
+		327,
 		7
 	],
 	"../pages/donations-published-details/donations-published-details.module": [
-		329,
+		330,
 		6
 	],
 	"../pages/donations-published/donations-published.module": [
-		330,
+		329,
 		5
 	],
 	"../pages/login/login.module": [
@@ -1154,8 +1154,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_settings_settings__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_delivery_donation_delivery_donation__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_delivery_qr_delivery_qr__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_donations_published_donations_published__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_donations_published_details_donations_published_details__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_donations_published_donations_published__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_donations_published_details_donations_published_details__ = __webpack_require__(116);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1215,10 +1215,10 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/delivery-donation/delivery-donation.module#DeliveryDonationPageModule', name: 'DeliveryDonationPage', segment: 'delivery-donation', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/delivery-qr/delivery-qr.module#DeliveryQrPageModule', name: 'DeliveryQrPage', segment: 'delivery-qr', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donate/donate.module#DonatePageModule', name: 'DonatePage', segment: 'donate', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/donation-form/donation-form.module#DonationFormPageModule', name: 'DonationFormPage', segment: 'donation-form', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/donations-published-details/donations-published-details.module#DonationsPublishedDetailsPageModule', name: 'DonationsPublishedDetailsPage', segment: 'donations-published-details', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/donate/donate.module#DonatePageModule', name: 'DonatePage', segment: 'donate', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/donations-published/donations-published.module#DonationsPublishedPageModule', name: 'DonationsPublishedPage', segment: 'donations-published', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/donations-published-details/donations-published-details.module#DonationsPublishedDetailsPageModule', name: 'DonationsPublishedDetailsPage', segment: 'donations-published-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reset-pass/reset-pass.module#ResetPassPageModule', name: 'ResetPassPage', segment: 'reset-pass', priority: 'low', defaultHistory: [] },
@@ -1380,7 +1380,7 @@ var DonationStatus;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_donate_donate__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_request_request__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_settings_settings__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_donations_published_donations_published__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_donations_published_donations_published__ = __webpack_require__(115);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
