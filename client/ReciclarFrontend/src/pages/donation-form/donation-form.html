@@ -13,18 +13,16 @@
         <ion-label>Lista de materiales</ion-label>
         <ion-select formControlName="materialType" [(ngModel)]="materialData.tipoId" interface="action-sheet">
           <div *ngFor="let mat of materialTypeList">
-              <ion-option value="{{mat.id}}" (ionSelect)="updateUnities(mat)">{{mat.descripcion}}</ion-option>
+              <ion-option value="{{mat.tipoId}}" (ionSelect)="updateUnities(mat)">{{mat.descripcion}}</ion-option>
           </div>
         </ion-select>
       </ion-item>
-    </ion-list>
 
-    <ion-item>
-      <ion-label>Cantidad</ion-label>
-      <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.cantidad"></ion-input>
-    </ion-item>
-
-    <ion-list>
+      <ion-item>
+        <ion-label>Cantidad</ion-label>
+        <ion-input type="number" formControlName="quantity" [(ngModel)]="materialData.cantidad"></ion-input>
+      </ion-item>
+    
       <ion-item>
         <ion-label>Unidades</ion-label>
         <ion-select formControlName="unities" [(ngModel)]="materialData.unidadId" interface="action-sheet">
@@ -33,9 +31,7 @@
           </div>
         </ion-select>
       </ion-item>
-    </ion-list>
-
-    <ion-list>
+      
       <ion-item>
         <ion-label>Estado del material</ion-label>
         <ion-select formControlName="materialState" [(ngModel)]="materialData.estado" interface="action-sheet">
@@ -44,16 +40,21 @@
           </div>
         </ion-select>
       </ion-item>
-    </ion-list>
 
-    <ion-item>
-      <ion-label>Descripción</ion-label>
-      <ion-textarea formControlName="materialDescription" [(ngModel)]="materialData.descripcion"></ion-textarea>
-    </ion-item>
+      <ion-item>
+        <ion-label>Descripción</ion-label>
+        <ion-textarea formControlName="materialDescription" [(ngModel)]="materialData.descripcion"></ion-textarea>
+      </ion-item>
 
+  </ion-list>
+  
+  <ion-footer>
     <button ion-button color="primary" full style="margin-top: 30px" (click)="saveMaterial()" type="button" [disabled]="formGroup.invalid">
       Guardar 
     </button>
+  </ion-footer>  
+
+    
 
   </form>
 

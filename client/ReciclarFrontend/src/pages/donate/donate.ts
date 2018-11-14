@@ -21,9 +21,11 @@ export class DonatePage {
               public materialProv: MaterialProvider,
               public request: RequestProvider) {
 
-    this.materialProv.getMyMaterials().subscribe( (data) => {
+    this.materialProv.getMyMaterials().subscribe( data => {
       this.donationList = data;
-      console.log(data)
+      console.log('donationList',data)
+    }, error => {
+      console.log(error);
     });
   }
   

@@ -28079,6 +28079,10 @@ page-donation-form ion-item {
   height: 65px;
 }
 
+page-donations-published ion-item {
+  word-wrap: break-word;
+}
+
 page-home .initial-message p {
   font-size: 16px;
 }
@@ -28184,12 +28188,12 @@ page-welcome button.btn-ingresa {
 }
 
 page-welcome .logo {
-  height: 350px;
+  height: 300px;
 }
 
 page-welcome .text-logo {
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   color: #FC8A1B;
 }
 
@@ -28202,7 +28206,7 @@ page-welcome .btn-blue {
 }
 
 page-welcome .container-logo {
-  margin-top: 40px;
+  margin-top: 10%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

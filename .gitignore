@@ -54,6 +54,7 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+.sourcemaps
 
 ### ApacheCordova ###
 # Apache Cordova generated files and directories

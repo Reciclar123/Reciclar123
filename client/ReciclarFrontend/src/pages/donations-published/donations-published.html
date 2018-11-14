@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="blue-dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Donaciones publicadas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="container">
+
+    <ion-list>
+        <div *ngFor="let item of allMaterialsList">
+          <ion-item text-wrap (click)="goToDetails(item)">
+            <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>
+            <br>
+            <b>Cantidad:</b> {{ item.cantidad }}
+            <br>
+            <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(item.tipoId, item.unidadId) }}
+            <br>
+            <b>Estado:</b> {{ item.estado }} <br>
+            {{ item.descripcion }}
+          </ion-item>
+        </div>
+    </ion-list>
+
+</ion-content>

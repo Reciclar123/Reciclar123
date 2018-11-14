@@ -24,6 +24,9 @@ import { MaterialProvider } from '../providers/material/material';
 import { SettingsPage } from '../pages/settings/settings';
 import { DeliveryDonationPage } from '../pages/delivery-donation/delivery-donation';
 import { DeliveryQrPage } from '../pages/delivery-qr/delivery-qr';
+import { DonationsPublishedPage } from '../pages/donations-published/donations-published';
+import { DonationsPublishedDetailsPage } from '../pages/donations-published-details/donations-published-details';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { DeliveryQrPage } from '../pages/delivery-qr/delivery-qr';
     DonationFormPage,
     SettingsPage,
     DeliveryDonationPage,
-    DeliveryQrPage
+    DeliveryQrPage,
+    DonationsPublishedPage,
+    DonationsPublishedDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,9 @@ import { DeliveryQrPage } from '../pages/delivery-qr/delivery-qr';
     FieldErrorDisplayComponent,
     TermsModalComponent,
     DeliveryDonationPage,
-    DeliveryQrPage
+    DeliveryQrPage,
+    DonationsPublishedPage,
+    DonationsPublishedDetailsPage
   ],
   providers: [
     StatusBar,
@@ -71,7 +78,8 @@ import { DeliveryQrPage } from '../pages/delivery-qr/delivery-qr';
     ValidationsProvider,
     RequestProvider,
     UserProvider,
-    MaterialProvider
+    MaterialProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule { }
