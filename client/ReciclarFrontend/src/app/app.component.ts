@@ -11,6 +11,8 @@ import { UserModel } from '../models/register-data.model';
 import { RequestProvider } from '../providers/request/request';
 import { SettingsPage } from '../pages/settings/settings';
 import { DonationsPublishedPage } from '../pages/donations-published/donations-published';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +29,8 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private requestPro: RequestProvider,
-    private usrPro: UserProvider) {
+    private usrPro: UserProvider,
+    private barcodeScanner: BarcodeScanner) {
     this.initializeApp();
 
     this.pages = [
@@ -88,10 +91,23 @@ export class MyApp {
         { title: 'Inicio', component: HomePage },
         { title: 'Donaciones Publicadas', component: DonationsPublishedPage },
         { title: 'Tu lista de Donaciones', component: HomePage },
-        { title: 'Recoger', component: HomePage },
         { title: 'Historico', component: HomePage },
       ];
     }
   }
+
+	scanQRCode() {
+		this.barcodeScanner
+			.scan()
+			.then((barcodeData) => {
+				let barcodeDat = barcodeData.text;
+				console.log('Barcode data', barcodeDat);
+				alert('Barcode data' + barcodeDat);
+			})
+			.catch((err) => {
+				console.log('Error', err);
+				alert('Error'+err);
+			});
+	}
 
 }
