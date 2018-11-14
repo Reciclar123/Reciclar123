@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalles</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="container">
+  <ion-item text-wrap>
+    <b>{{ materialProv.getMaterialValuebyId(material.tipoId) }}</b>
+    <br>
+    <b>Cantidad:</b> {{ material.cantidad }}
+    <br>
+    <b>Unidad:</b> {{ materialProv.getUnitiesValuebyId(material.tipoId, material.unidadId) }}
+    <br>
+    <b>Estado:</b> {{ material.estado }} <br>
+    {{ material.descripcion }} <br>
+    <b>Dirección:</b> {{ addressMaterial }} <br>
+  </ion-item>
+</ion-content>

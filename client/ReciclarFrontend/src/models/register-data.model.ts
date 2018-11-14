@@ -23,8 +23,10 @@ export interface UserModel {
     politicas: boolean;
     username: string;
     fecha?: string;
-    userId: string;
-    address?: [addressModel];
+    personId: string;
+    address?: Array<addressModel>;
+    addressPerson?: Array<addressModel>;
+
 }
 
 export interface daysModel {
@@ -56,7 +58,8 @@ export interface RegisterResponseModel {
     politicas: boolean;
     username: string;
     fecha?: string;
-    userId: string;
+    personId: string;
     tokenId: string;
-    address?: [addressModel];
+    address?: Array<addressModel>;
+    addressPerson?: Array<addressModel>;
 }

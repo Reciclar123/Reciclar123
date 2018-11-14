@@ -14,7 +14,7 @@
     <ion-list *ngFor="let item of donationList">
       <div class="container-list">
         <div class="check-container">
-          <ion-checkbox checked="false" (ionChange)="toggleMaterials(item.tipoId)"></ion-checkbox>
+          <ion-checkbox checked="false" (ionChange)="toggleMaterials(item.id)"></ion-checkbox>
         </div>
         <ion-item style="width: 80%">
           <b>{{ materialProv.getMaterialValuebyId(item.tipoId) }}</b>

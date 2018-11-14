@@ -1,5 +1,4 @@
-import { DonationStatus } from "./enums/data.enum";
-import { interceptingHandler } from "@angular/common/http/src/module";
+import { DonationStatus } from './enums/data.enum';
 
 export interface DeliveryMaterials {
     personId: string;
@@ -58,7 +57,21 @@ export interface UnitiesModel {
 
 export interface MaterialTypeModel {
     id: string;
+    tipoId: string;
     descripcion: string;
     factorMaterial: number;
     unidades: [UnitiesModel];
+}
+
+export interface AllMaterialList {
+    personId: string;
+    tipoId: string;
+    unidadId: number;
+    estado: string;
+    addressRecoleccionId: string;
+    address?: string;
+    descripcion: string;
+    cantidad: number;
+    status: string;
+    id: string;
 }
