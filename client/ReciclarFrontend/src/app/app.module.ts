@@ -26,6 +26,7 @@ import { DeliveryDonationPage } from '../pages/delivery-donation/delivery-donati
 import { DeliveryQrPage } from '../pages/delivery-qr/delivery-qr';
 import { DonationsPublishedPage } from '../pages/donations-published/donations-published';
 import { DonationsPublishedDetailsPage } from '../pages/donations-published-details/donations-published-details';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { DonationsPublishedDetailsPage } from '../pages/donations-published-deta
     ValidationsProvider,
     RequestProvider,
     UserProvider,
-    MaterialProvider
+    MaterialProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule { }
